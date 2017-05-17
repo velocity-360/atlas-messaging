@@ -28,9 +28,12 @@ gulp.task('css', ['less'], function(){
                 './assets/css/et-line.css',
                 './assets/css/animate.css',
                 './assets/css/magnific-popup.css',
+                './assets/css/app-landing.css',
                 './assets/css/fonts.css',
                 './assets/css/responsive.css',
-                './assets/css/custom.css'
+                './assets/css/custom.css',
+                './assets/css/slick.min.css',
+                './assets/css/slick-theme.min.css'
             ]
         )
         .pipe(minifyCSS())
