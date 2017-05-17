@@ -10,11 +10,14 @@ class Search extends Component {
 
 	}
 
-	locationChanged(location){
-		// console.log('LocationChanged: '+JSON.stringify(location))
+	componentDidMount(){
+		this.searchPlaces(this.props.session.currentLocation)
+	}
+
+	searchPlaces(location){
 		this.props.searchPlaces({
-			lat: location.lat(),
-			lng: location.lng(),
+			lat: location.lat,
+			lng: location.lng,
 			query: this.props.session.query
 		})
 		.then(response => {
@@ -22,6 +25,13 @@ class Search extends Component {
 		})
 		.catch(err => {
 			alert('ERROR: '+err.message)
+		})
+	}
+
+	locationChanged(location){
+		this.searchPlaces({
+			lat: location.lat(),
+			lng: location.lng()
 		})
 	}
 
