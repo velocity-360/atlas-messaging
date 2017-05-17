@@ -16,6 +16,7 @@ var template = (process.env.ENV) ? 'index' : 'index' // TODO: check if dev vs pr
 router.get('/', function(req, res, next){
 	var initialData = {
 		session: {
+			query: 'food',
 			currentLocation: { // this should come from a cookie user data
 				lat: 40.728199,
 				lng: -73.9894738

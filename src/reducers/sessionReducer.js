@@ -1,6 +1,7 @@
 import constants from '../constants'
 
 var initialState = {
+	query: 'food',
 	currentLocation: {
 		lat: 40.728199,
 		lng: -73.9894738

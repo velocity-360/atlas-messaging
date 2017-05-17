@@ -15,7 +15,7 @@ class Search extends Component {
 		this.props.searchPlaces({
 			lat: location.lat(),
 			lng: location.lng(),
-			query: 'coffee'
+			query: this.props.session.query
 		})
 		.then(response => {
 			// console.log(JSON.stringify(response))
