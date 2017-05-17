@@ -12,7 +12,7 @@ export default (props) => {
 						<a href="/" className="retina-logo" data-dark-logo="/images/canvasone-dark@2x.png"><img src="/images/canvasone@2x.png" alt="Atlas" /></a>
 					</div>
 					<div style={{width:260, display:'inline-block', padding:18, paddingLeft:0}}>
-						<input className="form-control" type="text" placeholder="Search" />
+						<input className="form-control" type="text" placeholder="Food, Coffee, Gyms..." />
 					</div>
 
 
