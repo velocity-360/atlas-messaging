@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { Nav, Map, Footer } from '../components/presentation'
+import Slider from 'react-slick'
 import { connect } from 'react-redux'
+import { Nav, Map, Footer } from '../components/presentation'
 import actions from '../actions'
 
 class Search extends Component {
 
 	markerClicked(marker, map){
 		console.log('marker clicked: '+marker.key)
-
+		this.refs.slider.slickGoTo(2)
 	}
 
 	componentDidMount(){
@@ -21,7 +22,7 @@ class Search extends Component {
 			query: this.props.session.query
 		})
 		.then(response => {
-			// console.log(JSON.stringify(response))
+			
 		})
 		.catch(err => {
 			alert('ERROR: '+err.message)
@@ -49,6 +50,15 @@ class Search extends Component {
 			})
 		})
 
+	    const sliderSettings = {
+			// dots: true,
+			infinite: false,
+			speed: 500,
+			slidesToShow: 3,
+			slidesToScroll: 3,
+			focusOnSelect: true
+	    }		
+
 		return (
 			<div>
 				<Nav />
@@ -68,16 +78,25 @@ class Search extends Component {
 
 						<section className="section nomargin">
 							<div className="container clearfix" style={{minHeight:600}}>
-								<h2 className="nobottommargin t300 ls1">
-									We create & craft projects that ooze creativity
-								</h2>
 
-								<ol>
+							    <Slider ref='slider' {...sliderSettings}>
 									{ places.map((place, i) => {
-											return <li key={place.id}>{place.name}</li>
+											const cardStyle = {background:'#fff', border:'1px solid #ddd', padding:6, height:240}
+
+											return (
+												<div key={place.id} style={{padding:12}}>
+													<div style={cardStyle}>
+														<h4 style={{fontFamily:'Pathway Gothic One'}}>{place.name}</h4>
+													</div>
+
+												</div>
+											)
 										})
 									}
-								</ol>
+
+							        <div></div>
+							    </Slider>
+
 							</div>
 						</section>
 
