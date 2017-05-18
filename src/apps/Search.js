@@ -94,7 +94,7 @@ class Search extends Component {
 
 												return (
 													<div id={place.id} key={place.id} style={style}>
-														<img style={{float:'right', borderRadius:22}} src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=44" />
+														<a href="#" onClick={this.selectPlace.bind(this, place.id)}><img style={{float:'right', borderRadius:22}} src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=44" /></a>
 														<h4 style={{fontFamily:'Pathway Gothic One', fontWeight:100, marginBottom:0}}>
 															<a onClick={this.selectPlace.bind(this, place.id)} style={{color:textColor}} href="#">{place.name}</a>
 														</h4>
@@ -114,6 +114,22 @@ class Search extends Component {
 									<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
 
 	<div className="events small-thumbs">
+
+		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
+			<div className="entry-image hidden-sm" style={{width:140}}>
+				<a href="#">
+					<img src="https://media-service.appspot.com/site/images/JoSkY_8o?crop=120" alt="Atlas" />
+				</a>
+			</div>
+			<div className="entry-c">
+				<div className="entry-title nobottompadding clearfix">
+					<span style={{fontSize:12, color:'#ddd'}}>May 17th, 2017</span>
+					<h3 className="nobottommargin notopmargin">
+						<a href="#" style={{color:'#333', fontFamily:'Pathway Gothic One', fontWeight:200}}>Inventore voluptates</a>
+					</h3>
+				</div>
+			</div>
+		</div>
 
 		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
 			<div className="entry-image hidden-sm" style={{width:140}}>
