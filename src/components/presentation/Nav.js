@@ -20,7 +20,7 @@ export default (props) => {
 						<ul className="one-page-menu sf-js-enabled" data-easing="easeInOutExpo" data-speed="1250" data-offset="65" style={{touchAction: 'pan-y'}}>
 							<li><a href="/"><div>Home</div></a></li>
 							<li><a href="/"><div>About</div></a></li>
-							<li><a href="/"><div>Works</div></a></li>
+							<li><a href="/"><div>Join</div></a></li>
 						</ul>
 					</nav>
 				</div>
