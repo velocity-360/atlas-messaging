@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Nav, Map, Footer } from '../components/presentation'
+import { Nav, Map, Footer, PlaceCard } from '../components/presentation'
 import actions from '../actions'
 
 class Search extends Component {
@@ -17,6 +17,7 @@ class Search extends Component {
 	}
 
 	selectPlace(placeId, event){
+		console.log('Select Place: '+placeId)
 		if (event)
 			event.preventDefault()
 
@@ -88,23 +89,8 @@ class Search extends Component {
 								<div className="col-md-3" style={{padding:0}}>
 									<div style={{background:'red', maxHeight:650, overflowY:'scroll'}}>
 										{ places.map((place, i) => {
-												const textColor = (this.state.selected == place.id) ? 'red' : '#333'
-												const bgColor = (this.state.selected == place.id) ? '#f9f9f9' : '#fff'
-												const style = {height:120, background:bgColor, padding:'8px 12px 12px 24px', borderBottom:'1px solid #f9f9f9'}
-
-												return (
-													<div id={place.id} key={place.id} style={style}>
-														<a href="#" onClick={this.selectPlace.bind(this, place.id)}><img style={{float:'right', borderRadius:22}} src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=44" /></a>
-														<h4 style={{fontFamily:'Pathway Gothic One', fontWeight:100, marginBottom:0}}>
-															<a onClick={this.selectPlace.bind(this, place.id)} style={{color:textColor}} href="#">{place.name}</a>
-														</h4>
-														<div style={{lineHeight:'1.1'}}>
-															<span style={{fontWeight:100, fontSize:12, color:'#888'}}>{place.location.address}</span>
-															<br />
-															{ (place.url == null) ? null : <a target="_blank" href={place.url} style={{fontWeight:100, fontSize:12}}>website</a> }
-														</div>
-													</div>
-												)
+												const selected = (this.state.selected == place.id)
+												return <PlaceCard key={place.id} selectPlace={this.selectPlace.bind(this)} selected={selected} {...place} />
 											})
 										}
 									</div>
