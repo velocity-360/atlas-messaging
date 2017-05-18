@@ -95,7 +95,7 @@ class Search extends Component {
 												return (
 													<div id={place.id} key={place.id} style={style}>
 														<img style={{float:'right', borderRadius:22}} src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=44" />
-														<h4 style={{fontFamily:'Pathway Gothic One', marginBottom:0}}>
+														<h4 style={{fontFamily:'Pathway Gothic One', fontWeight:100, marginBottom:0}}>
 															<a onClick={this.selectPlace.bind(this, place.id)} style={{color:textColor}} href="#">{place.name}</a>
 														</h4>
 														<div style={{lineHeight:'1.1'}}>
@@ -111,77 +111,57 @@ class Search extends Component {
 								</div>
 
 								<div className="col-md-9" style={{padding:0}}>
-									<div style={{background:'#f9f9f9', padding:24}}>
+									<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
 
-	<div className="fancy-title title-border">
-		<h4 style={{background:'#f9f9f9'}}>Recent Activity</h4>
-	</div>
+	<div className="events small-thumbs">
 
-	<div id="home-recent-news">
-		<div className="spost clearfix">
-			<div className="entry-image">
-				<a href="/profile/arcilmagden-4fom6v">
-					<img src="https://lh3.googleusercontent.com/p6rkKjvPfbRJWY_piIJnf0ETPO2wgJKhIGhBifOX_ma1eIJxK1v-cPA-etWf5qvBFT3KpvZqed5XmlWXw9uxpHmkPg=s64-c" alt="Velocity 360" />
+		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
+			<div className="entry-image hidden-sm" style={{width:140}}>
+				<a href="#">
+					<img src="https://media-service.appspot.com/site/images/JoSkY_8o?crop=120" alt="Atlas" />
 				</a>
 			</div>
 			<div className="entry-c">
-				<div className="entry-title">
-					<p className="nobottommargin">
-						Great tutorial, it would be more encouraging to buy the course if you didnt cut it at the...
-					</p>
+				<div className="entry-title nobottompadding clearfix">
+					<span style={{fontSize:12, color:'#ddd'}}>May 17th, 2017</span>
+					<h3 className="nobottommargin notopmargin">
+						<a href="#" style={{color:'#333', fontFamily:'Pathway Gothic One', fontWeight:200}}>Inventore voluptates</a>
+					</h3>
 				</div>
-				<ul className="entry-meta"><li>May 17th, 2017</li></ul>
 			</div>
 		</div>
 
-		<div className="spost clearfix">
-			<div className="entry-image">
-				<a href="/profile/arcilmagden-4fom6v">
-					<img src="https://lh3.googleusercontent.com/p6rkKjvPfbRJWY_piIJnf0ETPO2wgJKhIGhBifOX_ma1eIJxK1v-cPA-etWf5qvBFT3KpvZqed5XmlWXw9uxpHmkPg=s64-c" alt="Velocity 360" />
+		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
+			<div className="entry-image hidden-sm" style={{width:140}}>
+				<a href="#">
+					<img src="https://media-service.appspot.com/site/images/JoSkY_8o?crop=120" alt="Atlas" />
 				</a>
 			</div>
 			<div className="entry-c">
-				<div className="entry-title">
-					<p className="nobottommargin">
-						Great tutorial, it would be more encouraging to buy the course if you didnt cut it at the...
-					</p>
+				<div className="entry-title nobottompadding clearfix">
+					<span style={{fontSize:12, color:'#ddd'}}>May 17th, 2017</span>
+					<h3 className="nobottommargin notopmargin">
+						<a href="#" style={{color:'#333', fontFamily:'Pathway Gothic One', fontWeight:200}}>Inventore voluptates</a>
+					</h3>
 				</div>
-				<ul className="entry-meta"><li>May 17th, 2017</li></ul>
 			</div>
 		</div>
 
-		<div className="spost clearfix">
-			<div className="entry-image">
-				<a href="/profile/arcilmagden-4fom6v">
-					<img src="https://lh3.googleusercontent.com/p6rkKjvPfbRJWY_piIJnf0ETPO2wgJKhIGhBifOX_ma1eIJxK1v-cPA-etWf5qvBFT3KpvZqed5XmlWXw9uxpHmkPg=s64-c" alt="Velocity 360" />
+		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
+			<div className="entry-image hidden-sm" style={{width:140}}>
+				<a href="#">
+					<img src="https://media-service.appspot.com/site/images/JoSkY_8o?crop=120" alt="Atlas" />
 				</a>
 			</div>
 			<div className="entry-c">
-				<div className="entry-title">
-					<p className="nobottommargin">
-						Great tutorial, it would be more encouraging to buy the course if you didnt cut it at the...
-					</p>
+				<div className="entry-title nobottompadding clearfix">
+					<span style={{fontSize:12, color:'#ddd'}}>May 17th, 2017</span>
+					<h3 className="nobottommargin notopmargin">
+						<a href="#" style={{color:'#333', fontFamily:'Pathway Gothic One', fontWeight:200}}>Inventore voluptates</a>
+					</h3>
 				</div>
-				<ul className="entry-meta"><li>May 17th, 2017</li></ul>
 			</div>
-		</div>
-
-		<div className="spost clearfix">
-			<div className="entry-image">
-				<a href="/profile/arcilmagden-4fom6v">
-					<img src="https://lh3.googleusercontent.com/p6rkKjvPfbRJWY_piIJnf0ETPO2wgJKhIGhBifOX_ma1eIJxK1v-cPA-etWf5qvBFT3KpvZqed5XmlWXw9uxpHmkPg=s64-c" alt="Velocity 360" />
-				</a>
-			</div>
-			<div className="entry-c">
-				<div className="entry-title">
-					<p className="nobottommargin">
-						Great tutorial, it would be more encouraging to buy the course if you didnt cut it at the...
-					</p>
-				</div>
-				<ul className="entry-meta"><li>May 17th, 2017</li></ul>
-			</div>
-		</div>
-
+		</div>		
 	</div>
 
 
