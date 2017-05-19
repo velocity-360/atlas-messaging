@@ -1228,8 +1228,9 @@ var SEMICOLON = SEMICOLON || {};
 						$('#page-menu:not(.dots-menu,.no-sticky)').addClass('sticky-page-menu');
 					}
 				}
-			} else {
-				$('#page-menu:not(.dots-menu,.no-sticky)').removeClass('sticky-page-menu');
+			}
+			else {
+				// $('#page-menu:not(.dots-menu,.no-sticky)').removeClass('sticky-page-menu');
 			}
 		},
 

@@ -2030,13 +2030,13 @@ body.top-search-open #top-account {
 #page-menu,
 #page-menu-wrap {
   position: relative;
-  height: 44px;
+  height: 70px;
   line-height: 44px;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 #page-menu-wrap {
   z-index: 99;
-  background-color: #1ABC9C;
+  background-color: #fff;
   -webkit-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   -o-transform: translate3d(0, 0, 0);
@@ -2048,7 +2048,7 @@ body.top-search-open #top-account {
   z-index: 99;
   left: 0;
   width: 100%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #ddd;
 }
 #header.static-sticky ~ #page-menu.sticky-page-menu #page-menu-wrap,
 #header.static-sticky ~ #content #page-menu.sticky-page-menu #page-menu-wrap {
@@ -2101,7 +2101,7 @@ body.top-search-open #top-account {
   line-height: 28px;
   margin: 8px 4px;
   padding: 0 14px;
-  color: #FFF;
+  color: #333;
   font-size: 14px;
   border-radius: 14px;
 }

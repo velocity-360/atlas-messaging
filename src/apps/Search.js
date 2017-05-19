@@ -61,7 +61,7 @@ class Search extends Component {
 			markers.push({
 				key: place.id,
 			    position: {lat:place.location.lat, lng:place.location.lng},
-				icon: '/images/icons/map_icon_32.png',
+				icon: 'dist/images/icons/map_icon_32.png',
 				label: '',
 				defaultAnimation: 2
 			})
@@ -70,34 +70,32 @@ class Search extends Component {
 		return (
 			<div>
 				<Nav />
-				<div className="stretched side-header">
-					<div id="wrapper" className="clearfix">
-						<header id="header" className="no-sticky" style={{background:'#fff', paddingTop:70}}>
-							<Map 
-								center={this.props.session.currentLocation}
-								zoom={14}
-								locationChanged={this.locationChanged.bind(this)}
-								markers={markers}
-								markerClicked={this.markerClicked.bind(this)}
-								containerElement={<div style={{height:100+'%'}} />} 
-								mapElement={<div style={{height:100+'%'}} />} />
-						</header>
+				<header id="header" className="no-sticky" style={{background:'#fff', paddingTop:70}}>
+					<Map 
+						center={this.props.session.currentLocation}
+						zoom={14}
+						locationChanged={this.locationChanged.bind(this)}
+						markers={markers}
+						markerClicked={this.markerClicked.bind(this)}
+						containerElement={<div style={{height:100+'%'}} />} 
+						mapElement={<div style={{height:100+'%'}} />} />
+				</header>
 
-						<section className="section nomargin notoppadding" style={{paddingBottom:0}}>
-							<div className="row">
+				<section className="section nomargin notoppadding" style={{paddingBottom:0}}>
+					<div className="row">
 
-								<div className="col-md-6" style={{padding:0}}>
-									<div style={{background:'red', maxHeight:650, overflowY:'scroll'}}>
-										{ places.map((place, i) => {
-												const selected = (this.state.selected == place.id)
-												return <PlaceCard key={place.id} selectPlace={this.selectPlace.bind(this)} selected={selected} {...place} />
-											})
-										}
-									</div>
-								</div>
+						<div className="col-md-6" style={{padding:0}}>
+							<div style={{background:'red', maxHeight:650, overflowY:'scroll'}}>
+								{ places.map((place, i) => {
+										const selected = (this.state.selected == place.id)
+										return <PlaceCard key={place.id} selectPlace={this.selectPlace.bind(this)} selected={selected} {...place} />
+									})
+								}
+							</div>
+						</div>
 
-								<div className="col-md-6" style={{padding:0}}>
-									<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
+						<div className="col-md-6" style={{padding:0}}>
+							<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
 
 	<div className="events small-thumbs">
 
@@ -167,15 +165,12 @@ class Search extends Component {
 	</div>
 
 
-									</div>
-								</div>
-
 							</div>
-						</section>
+						</div>
 
-						<Footer />
 					</div>
-				</div>
+				</section>
+				<Footer />
 			</div>
 		)
 	}

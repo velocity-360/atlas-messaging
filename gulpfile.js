@@ -58,7 +58,16 @@ gulp.task('copy-images', function(){
         .pipe(gulp.dest('./dist/images/'))
 })
 
-gulp.task('js', function(){
+gulp.task('app', function(){
+    return gulp.src(
+            ['./assets/js/app.js']
+        )
+        .pipe(gp_rename('app.min.js'))
+        .pipe(gp_uglify())
+        .pipe(gulp.dest('./dist/js/'))
+});
+
+gulp.task('js', ['app'], function(){
     return gulp.src(
             [
                 './assets/js/jquery.js',
@@ -74,20 +83,12 @@ gulp.task('js', function(){
         .pipe(gulp.dest('./dist/js/'))
 });
 
-gulp.task('es6-es5', ['js'], function(){
-    return gulp.src([
-                './src/*/**.js',
-                './src/*/*/**.js'
-            ]
-        )
-        .pipe(to5())
-        .pipe(gulp.dest('./dist/es5/'))
-});
+
 
 gulp.task('watch', function() {
     gulp.watch(['./src/*/**.js', './src/*/*/**.js', './assets/js/**.js'], ['prod'])
 })
 
-gulp.task('prod', ['style', 'copy-images', 'es6-es5'], function(){})
+gulp.task('prod', ['style', 'js', 'copy-images'], function(){})
 
-gulp.task('default', ['prod', 'watch'], function(){})
+gulp.task('default', ['prod', 'js', 'watch'], function(){})

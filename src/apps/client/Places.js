@@ -2,14 +2,14 @@ import React, { Componet } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from '../../stores'
-import Search from '../Search'
+import Places from '../Places'
 
 const initialState = window.__PRELOADED_STATE__
 
 const app = (
 	<Provider store={store.configure(initialState)}>
-		<Search />
+		<Places />
 	</Provider>
 )
 
-ReactDOM.render(app, document.getElementById('wrapper'))
+ReactDOM.render(app, document.getElementById('root'))
