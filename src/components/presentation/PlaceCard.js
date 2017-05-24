@@ -16,7 +16,7 @@ export default (props) => {
 				<a onClick={props.selectPlace.bind(this, place.id)} style={{color:textColor}} href="#">{place.name}</a>
 			</h4>
 			<div style={{lineHeight:'1.1'}}>
-				<span style={localStyle.detail}>{place.location.address}</span>
+				<span style={localStyle.detail}>{place.address}</span>
 				<br />
 				{ (place.url == null) ? null : <a target="_blank" href={place.url} style={localStyle.link}>website</a> }
 			</div>
