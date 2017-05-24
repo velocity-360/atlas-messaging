@@ -103,7 +103,7 @@ class Search extends Component {
 				<section className="section nomargin notoppadding" style={{paddingBottom:0}}>
 					<div className="row">
 
-						<div className="col-md-6" style={{padding:0}}>
+						<div className="col-md-4" style={{padding:0}}>
 							<div style={{background:'red', maxHeight:650, overflowY:'scroll'}}>
 								{ places.map((place, i) => {
 										const selected = (this.state.selected == place.id)
@@ -113,7 +113,7 @@ class Search extends Component {
 							</div>
 						</div>
 
-						<div className="col-md-6" style={{padding:0}}>
+						<div className="col-md-8" style={{padding:0}}>
 							<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
 
 								<div className="events small-thumbs">
