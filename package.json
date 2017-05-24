@@ -4,6 +4,7 @@
   "private": true,
   "server": true,
   "scripts": {
+    "dev": "node www/server",
     "test": "jest",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && NODE_ENV=production webpack && gulp prod",
@@ -60,6 +61,7 @@
     "babel-polyfill": "^6.23.0",
     "chai": "latest",
     "chai-http": "latest",
+    "express": "^4.15.3",
     "gulp-sourcemaps": "^2.6.0",
     "jest": "^20.0.3",
     "mocha": "latest",
