@@ -42,8 +42,10 @@
 		<div class="row">
 			<div class="col-md-4">
 				<h3 id="headline">Add Place</h3>
+				<img id="icon" src="" />
+				<br /><br />
 				<input onChange="updatePlace(event)" type="text" id="input-name" name="name" placeholder="Name (required)" class="form-control" /><br />
-				<input onChange="updatePlace(event)" type="text" id="input-instagram" name="instagram" placeholder="Instagram (required)" class="form-control" /><br />
+				<input onChange="updatePlace(event)" type="text" id="input-instagram" name="instagram" placeholder="Instagram (required)" onBlur="checkInstagram(event)" class="form-control" /><br />
 				<input onChange="updatePlace(event)" type="text" id="input-website" name="website" placeholder="Website" class="form-control" /><br />
 				<input onChange="updatePlace(event)" type="text" id="input-address" name="address" placeholder="Address (required)" class="form-control" /><br />
 				<input onChange="updatePlace(event)" type="text" id="input-city" name="city" placeholder="City" class="form-control" /><br />

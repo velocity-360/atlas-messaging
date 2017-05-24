@@ -10,7 +10,7 @@ export default (props) => {
 	return (
 		<div id={place.id} style={style}>
 			<a href="#" onClick={props.selectPlace.bind(this, place.id)}>
-				<img style={localStyle.icon} src="https://media-service.appspot.com/site/images/hfYJXMjQ?crop=44" />
+				<img style={localStyle.icon} src={place.icon} />
 			</a>
 			<h4 style={localStyle.header}>
 				<a onClick={props.selectPlace.bind(this, place.id)} style={{color:textColor}} href="#">{place.name}</a>
@@ -27,7 +27,9 @@ export default (props) => {
 const localStyle = {
 	icon: {
 		float: 'right',
-		borderRadius: 22
+		width: 64,
+		height: 64,
+		borderRadius: 32
 	},
 	header: {
 		fontFamily: 'Pathway Gothic One',

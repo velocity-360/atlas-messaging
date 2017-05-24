@@ -48,7 +48,7 @@ var fetchPlaces = function(){
 		places.forEach(function(place, i){
 			placeMap[place.id] = place
 		})
-		console.log('PLACES: '+JSON.stringify(placeMap))
+		// console.log('PLACES: '+JSON.stringify(placeMap))
 
 		renderPlaces()
 	})
@@ -67,11 +67,56 @@ var selectPlace = function(event){
 	$('#input-address').val(selectedPlace.address)
 	$('#input-city').val(selectedPlace.city)
 	$('#input-state').val(selectedPlace.state)
+	$('#icon').attr('src', selectedPlace.icon)
 	$('#submit-button').html('Update Place')
 }
 
 var updatePlace = function(event){
 	place[event.target.name] = event.target.value.trim()
+}
+
+var checkInstagram = function(event){
+	if (event.target.value.length == 0)
+		return
+
+	if (selectedPlace != null){
+		if (selectedPlace.instagram == event.target.value)
+			return		
+	}
+
+	var params = {
+		site: project,
+		exec: 'request',
+		endpoint: 'https://www.instagram.com/'+event.target.value.trim()+'/media/',
+		query: null
+	}
+
+	// console.log('checkInstagram: '+JSON.stringify(params))
+	var _place = place
+    $.ajax({
+        url: 'http://www.turbo360.co/functions',
+        type: 'POST',
+        data: JSON.stringify(params),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: true,
+        success: function(response, status) {
+        	var posts = response.data.items
+        	if (posts.length == 0) // profile not found
+        		return
+
+        	var firstPost = posts[0]
+        	var user = firstPost.user
+        	_place['icon'] = user.profile_picture
+
+			$('#icon').attr('src', _place.icon)
+			return
+        },
+	    error: function(xhr, status, error) { 
+	    	alert('Error: '+error.message)
+			return
+	    }
+    })
 }
 
 var createPlace = function(event){
