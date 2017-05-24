@@ -1,7 +1,9 @@
 // var project = '592482a7a7045b0011f5afc0' // Matt's project
 var project = '591f2766fbd0120011a4d4de' // your staging project
 
-var turbo = Turbo(project)
+var turbo = Turbo({
+	site_id: project
+})
 
 var place = {
 	name: '',
