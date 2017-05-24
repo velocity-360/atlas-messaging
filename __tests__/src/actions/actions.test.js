@@ -20,5 +20,23 @@ describe('action creators', () => {
 	})
 
 
+	// describe('instagram request', () => {
+	// 	const place = {
+	// 		id: '123',
+	// 		instagram: 'blinkfitness'
+	// 	}
+
+	// 	//queryInstagram: (place) => {
+	// 	actions.queryInstagram(place)
+	// 	.then(response => {
+	// 		expect(response).to.
+
+	// 	})
+	// 	.catch(err => {
+
+	// 	})
+	// })
+
+
 
 })
