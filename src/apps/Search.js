@@ -17,14 +17,26 @@ class Search extends Component {
 	}
 
 	selectPlace(placeId, event){
-		console.log('Select Place: '+placeId)
 		if (event)
 			event.preventDefault()
 
 		window.scrollTo(0, 0)
-
 		this.setState({
 			selected: placeId
+		})
+
+		const selectedPlace = this.props.place[placeId]
+		// console.log('Select Place: '+JSON.stringify(selectedPlace))
+		if (selectedPlace.instagram == null)
+			return
+
+		this.props.queryInstagram(selectedPlace.instagram)
+		.then(response => {
+			console.log('INSTAGRAM: '+JSON.stringify(response))
+
+		})
+		.catch(err => {
+			alert('Error: '+err.message)
 		})
 	}
 
@@ -190,7 +202,8 @@ const stateToProps = (state) => {
 const dispatchToProps = (dispatch) => {
 	return {
 		locationChanged: (location) => dispatch(actions.updateLocation(location)),
-		searchPlaces: (location) => dispatch(actions.searchPlaces(location))
+		searchPlaces: (location) => dispatch(actions.searchPlaces(location)),
+		queryInstagram: (username) => dispatch(actions.queryInstagram(username))
 	}
 }
 
