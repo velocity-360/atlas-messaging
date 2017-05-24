@@ -25,14 +25,17 @@ class Search extends Component {
 			selected: placeId
 		})
 
+		if (this.props.posts[placeId] != null)
+			return
+
 		const selectedPlace = this.props.place[placeId]
-		// console.log('Select Place: '+JSON.stringify(selectedPlace))
 		if (selectedPlace.instagram == null)
 			return
 
-		this.props.queryInstagram(selectedPlace.instagram)
+		// this.props.queryInstagram(selectedPlace.instagram)
+		this.props.queryInstagram(selectedPlace)
 		.then(response => {
-			console.log('INSTAGRAM: '+JSON.stringify(response))
+			// console.log('INSTAGRAM: '+JSON.stringify(response))
 
 		})
 		.catch(err => {
@@ -195,7 +198,8 @@ class Search extends Component {
 const stateToProps = (state) => {
 	return {
 		session: state.session,
-		place: state.place
+		place: state.place,
+		posts: state.post
 	}
 }
 
