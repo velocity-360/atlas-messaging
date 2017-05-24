@@ -26,6 +26,7 @@ const post = (endpoint, params, actionType) => {
 		.then(data => {
 			// console.log('POST: '+JSON.stringify(data))
 			if (actionType != null){
+				// console.log('DISPATCH ACTION: '+JSON.stringify(params))
 				dispatch({
 					type: actionType,
 					params: params, // can be null
@@ -56,17 +57,17 @@ export default {
 		}
 	},
 
-	queryInstagram: (username) => {
+	queryInstagram: (place) => {
 		return dispatch => {
-			const url = 'http://www.turbo360.co/functions'
 			const params = {
+				place: place,
 				site: pkg.app,
 				exec: 'request',
-				endpoint: 'https://www.instagram.com/'+username+'/media/',
+				endpoint: 'https://www.instagram.com/'+place.instagram+'/media/',
 				query: null
 			}
 
-			return dispatch(post(url, params, constants.POSTS_RECEIVED))
+			return dispatch(post('http://www.turbo360.co/functions', params, constants.POSTS_RECEIVED))
 		}
 	}
 
