@@ -1,9 +1,30 @@
 import constants from '../constants'
 import { HTTPClient, TurboClient } from '../utils'
+import pkg from '../../package.json'
 
 const get = (endpoint, params, actionType) => {
 	return dispatch => HTTPClient.getRequest(endpoint, params)
 		.then(data => {
+			// console.log('GET: '+JSON.stringify(data))
+			if (actionType != null){
+				dispatch({
+					type: actionType,
+					params: params, // can be null
+					data: data
+				})
+			}
+			
+			return data
+		})
+		.catch(err => {
+			throw err
+		})
+}
+
+const post = (endpoint, params, actionType) => {
+	return dispatch => HTTPClient.postRequest(endpoint, params)
+		.then(data => {
+			// console.log('POST: '+JSON.stringify(data))
 			if (actionType != null){
 				dispatch({
 					type: actionType,
@@ -32,6 +53,20 @@ export default {
 	searchPlaces: (params) => {
 		return dispatch => {
 	 		return dispatch(TurboClient.getRequest('place', params, constants.PLACES_RECEIVED))
+		}
+	},
+
+	queryInstagram: (username) => {
+		return dispatch => {
+			const url = 'http://www.turbo360.co/functions'
+			const params = {
+				site: pkg.app,
+				exec: 'request',
+				endpoint: 'https://www.instagram.com/'+username+'/media/',
+				query: null
+			}
+
+			return dispatch(post(url, params, constants.POSTS_RECEIVED))
 		}
 	}
 
