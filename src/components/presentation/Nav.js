@@ -13,7 +13,7 @@ export default (props) => {
 					<nav className="one-page-menu">
 						<ul className="hidden-xs">
 							<li><a href="http://turbo.velocity360.io/landing"><div>Home</div></a></li>
-							<li><a href="/courses"><div>About</div></a></li>
+							<li><a href="http://www.atlasmessaging.com"><div>About</div></a></li>
 							<li><a href="/"><div>Join</div></a></li>							
 						</ul>
 
