@@ -5,6 +5,7 @@ var autoprefixer = require('gulp-autoprefixer')
 var gp_concat = require('gulp-concat')
 var gp_rename = require('gulp-rename')
 var gp_uglify = require('gulp-uglify')
+var sourcemaps = require('gulp-sourcemaps')
 var less = require('gulp-less')
 var to5 = require('gulp-6to5')
 var path = require('path')
@@ -36,10 +37,17 @@ gulp.task('css', ['less'], function(){
                 './assets/css/slick-theme.min.css'
             ]
         )
+        .pipe(sourcemaps.init())
         .pipe(minifyCSS())
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
         .pipe(gp_concat('style.min.css'))
+        .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest('./dist/css/'))
+
+        // .pipe(minifyCSS())
+        // .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
+        // .pipe(gp_concat('style.min.css'))
+        // .pipe(gulp.dest('./dist/css/'))
 })
 
 gulp.task('copy-fonts', function(){
@@ -62,8 +70,10 @@ gulp.task('app', function(){
     return gulp.src(
             ['./assets/js/app.js']
         )
-        .pipe(gp_rename('app.min.js'))
+        .pipe(sourcemaps.init())
         .pipe(gp_uglify())
+        .pipe(gp_rename('app.min.js'))
+        .pipe(sourcemaps.write(''))
         .pipe(gulp.dest('./dist/js/'))
 });
 
@@ -76,17 +86,17 @@ gulp.task('js', ['app'], function(){
                 './assets/js/custom.js'
             ]
         )
+        .pipe(sourcemaps.init())
         .pipe(gp_concat('vendor.min.js'))
         .pipe(gulp.dest('./dist/js/'))
-        .pipe(gp_rename('vendor.min.js'))
         .pipe(gp_uglify())
+        .pipe(gp_rename('vendor.min.js'))
+        .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest('./dist/js/'))
 });
 
-
-
 gulp.task('watch', function() {
-    gulp.watch(['./src/*/**.js', './src/*/*/**.js', './assets/js/**.js'], ['prod'])
+    gulp.watch(['./assets/js/**.js', './assets/css/**'], ['prod'])
 })
 
 gulp.task('prod', ['style', 'js', 'copy-images'], function(){})

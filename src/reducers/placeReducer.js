@@ -10,13 +10,14 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 
 		case constants.PLACES_RECEIVED:
-			const venues = action.data.response.venues // this is unique to Foursquare API. Change when switching.
-			// console.log('PLACES_RECEIVED: '+JSON.stringify(venues))
-			venues.forEach((venue, i) => {
+			console.log('PLACES_RECEIVED: '+JSON.stringify(action.data))
+			
+			// const venues = action.data.response.venues // this is unique to Foursquare API. Change when switching.
+			action.data.forEach((venue, i) => {
 				newState[venue.id] = venue
 			})
 
-			newState['all'] = venues
+			newState['all'] = action.data
 			return newState
 
 		default:

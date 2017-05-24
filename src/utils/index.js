@@ -1,9 +1,9 @@
-// import TurboClient from './TurboClient'
+import TurboClient from './TurboClient'
 import HTTPClient from './HTTPClient'
 
 export {
 
-	// TurboClient,
+	TurboClient,
 	HTTPClient
 	
 }

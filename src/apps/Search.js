@@ -33,11 +33,13 @@ class Search extends Component {
 	}
 
 	searchPlaces(location){
-		this.props.searchPlaces({
-			lat: location.lat,
-			lng: location.lng,
-			query: this.props.session.query
-		})
+		// this.props.searchPlaces({
+		// 	lat: location.lat,
+		// 	lng: location.lng,
+		// 	query: this.props.session.query
+		// })
+		this.props
+		.searchPlaces(null)
 		.then(response => {
 			
 		})
@@ -47,10 +49,10 @@ class Search extends Component {
 	}
 
 	locationChanged(location){
-		this.searchPlaces({
-			lat: location.lat(),
-			lng: location.lng()
-		})
+		// this.searchPlaces({
+		// 	lat: location.lat(),
+		// 	lng: location.lng()
+		// })
 	}
 
 	render(){
@@ -58,13 +60,15 @@ class Search extends Component {
 
 		let markers = []
 		places.forEach((place, i) => {
-			markers.push({
-				key: place.id,
-			    position: {lat:place.location.lat, lng:place.location.lng},
-				icon: 'dist/images/icons/map_icon_32.png',
-				label: '',
-				defaultAnimation: 2
-			})
+			if (place.location != null){
+				markers.push({
+					key: place.id,
+				    position: {lat:place.location.lat, lng:place.location.lng},
+					icon: 'dist/images/icons/map_icon_32.png',
+					label: '',
+					defaultAnimation: 2
+				})
+			}
 		})
 
 		return (

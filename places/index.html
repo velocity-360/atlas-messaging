@@ -41,19 +41,19 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<h3>Add Place</h3>
-				<input onChange="updatePlace(event)" type="text" name="name" placeholder="Name (required)" class="form-control" /><br />
-				<input onChange="updatePlace(event)" type="text" name="instagram" placeholder="Instagram (required)" class="form-control" /><br />
-				<input onChange="updatePlace(event)" type="text" name="website" placeholder="Website" class="form-control" /><br />
-				<input onChange="updatePlace(event)" type="text" name="address" placeholder="Address (required)" class="form-control" /><br />
-				<input onChange="updatePlace(event)" type="text" name="city" placeholder="City" class="form-control" /><br />
-				<input onChange="updatePlace(event)" type="text" name="state" placeholder="State" class="form-control" /><br />
-				<button onClick="createPlace(event)" class="button button-rnd">Create Place</button>
-
+				<h3 id="headline">Add Place</h3>
+				<input onChange="updatePlace(event)" type="text" id="input-name" name="name" placeholder="Name (required)" class="form-control" /><br />
+				<input onChange="updatePlace(event)" type="text" id="input-instagram" name="instagram" placeholder="Instagram (required)" class="form-control" /><br />
+				<input onChange="updatePlace(event)" type="text" id="input-website" name="website" placeholder="Website" class="form-control" /><br />
+				<input onChange="updatePlace(event)" type="text" id="input-address" name="address" placeholder="Address (required)" class="form-control" /><br />
+				<input onChange="updatePlace(event)" type="text" id="input-city" name="city" placeholder="City" class="form-control" /><br />
+				<input onChange="updatePlace(event)" type="text" id="input-state" name="state" placeholder="State" class="form-control" /><br />
+				<button onClick="createPlace(event)" id="submit-button" class="button button-rnd">Create Place</button>
 			</div>
 
 			<div class="col-md-4">
 				<h3>Places</h3>
+				<span>Click to Edit</span>
 				<ol id="place-list">
 
 				</ol>
