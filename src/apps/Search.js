@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Nav, Map, Footer, PlaceCard } from '../components/presentation'
+import { Nav, Map, Footer, PlaceCard, Post } from '../components/presentation'
 import actions from '../actions'
 
 class Search extends Component {
@@ -72,7 +72,6 @@ class Search extends Component {
 
 	render(){
 		const places = this.props.place.all || []
-
 		let markers = []
 		places.forEach((place, i) => {
 			if (place.location != null){
@@ -86,6 +85,7 @@ class Search extends Component {
 			}
 		})
 
+		const posts = this.props.posts[this.state.selected] || []
 		return (
 			<div>
 				<Nav />
@@ -116,73 +116,9 @@ class Search extends Component {
 						<div className="col-md-6" style={{padding:0}}>
 							<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
 
-	<div className="events small-thumbs">
-
-		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
-			<div className="entry-image hidden-sm" style={{width:140}}>
-				<a href="#">
-					<img src="https://media-service.appspot.com/site/images/JoSkY_8o?crop=120" alt="Atlas" />
-				</a>
-			</div>
-			<div className="entry-c">
-				<div className="entry-title nobottompadding clearfix">
-					<span style={{fontSize:12, color:'#ddd'}}>May 17th, 2017</span>
-					<h3 className="nobottommargin notopmargin">
-						<a href="#" style={{color:'#333', fontFamily:'Pathway Gothic One', fontWeight:200}}>Inventore voluptates</a>
-					</h3>
-				</div>
-			</div>
-		</div>
-
-		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
-			<div className="entry-image hidden-sm" style={{width:140}}>
-				<a href="#">
-					<img src="https://media-service.appspot.com/site/images/JoSkY_8o?crop=120" alt="Atlas" />
-				</a>
-			</div>
-			<div className="entry-c">
-				<div className="entry-title nobottompadding clearfix">
-					<span style={{fontSize:12, color:'#ddd'}}>May 17th, 2017</span>
-					<h3 className="nobottommargin notopmargin">
-						<a href="#" style={{color:'#333', fontFamily:'Pathway Gothic One', fontWeight:200}}>Inventore voluptates</a>
-					</h3>
-				</div>
-			</div>
-		</div>
-
-		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
-			<div className="entry-image hidden-sm" style={{width:140}}>
-				<a href="#">
-					<img src="https://media-service.appspot.com/site/images/JoSkY_8o?crop=120" alt="Atlas" />
-				</a>
-			</div>
-			<div className="entry-c">
-				<div className="entry-title nobottompadding clearfix">
-					<span style={{fontSize:12, color:'#ddd'}}>May 17th, 2017</span>
-					<h3 className="nobottommargin notopmargin">
-						<a href="#" style={{color:'#333', fontFamily:'Pathway Gothic One', fontWeight:200}}>Inventore voluptates</a>
-					</h3>
-				</div>
-			</div>
-		</div>
-
-		<div className="entry clearfix" style={{background:'#fff', marginBottom:25}}>
-			<div className="entry-image hidden-sm" style={{width:140}}>
-				<a href="#">
-					<img src="https://media-service.appspot.com/site/images/JoSkY_8o?crop=120" alt="Atlas" />
-				</a>
-			</div>
-			<div className="entry-c">
-				<div className="entry-title nobottompadding clearfix">
-					<span style={{fontSize:12, color:'#ddd'}}>May 17th, 2017</span>
-					<h3 className="nobottommargin notopmargin">
-						<a href="#" style={{color:'#333', fontFamily:'Pathway Gothic One', fontWeight:200}}>Inventore voluptates</a>
-					</h3>
-				</div>
-			</div>
-		</div>		
-	</div>
-
+								<div className="events small-thumbs">
+									{ posts.map((post, i) => <Post key={post.id} {...post} />) }
+								</div>
 
 							</div>
 						</div>
