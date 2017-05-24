@@ -1,5 +1,5 @@
 import constants from '../constants'
-import { HTTPClient } from '../utils'
+import { HTTPClient, TurboClient } from '../utils'
 
 const get = (endpoint, params, actionType) => {
 	return dispatch => HTTPClient.getRequest(endpoint, params)
@@ -31,18 +31,24 @@ export default {
 
 	searchPlaces: (params) => {
 		return dispatch => {
-			// https://api.foursquare.com/v2/venues/search?v=20140806&ll=\(latLng)&client_id=VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD&client_secret=UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ
-			const query = {
-				v: '20140806',
-				ll: params.lat+','+params.lng,
-				query: params.query,
-				client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
-				client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ'
-			}
-
-			return dispatch(get('https://api.foursquare.com/v2/venues/search', query, constants.PLACES_RECEIVED))
+	 		return dispatch(TurboClient.getRequest('place', params, constants.PLACES_RECEIVED))
 		}
 	}
+
+	// searchPlaces: (params) => {
+	// 	return dispatch => {
+	// 		// https://api.foursquare.com/v2/venues/search?v=20140806&ll=\(latLng)&client_id=VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD&client_secret=UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ
+	// 		const query = {
+	// 			v: '20140806',
+	// 			ll: params.lat+','+params.lng,
+	// 			query: params.query,
+	// 			client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
+	// 			client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ'
+	// 		}
+
+	// 		return dispatch(get('https://api.foursquare.com/v2/venues/search', query, constants.PLACES_RECEIVED))
+	// 	}
+	// }
 
 	// fetchUsers: (params) => {
 	// 	return dispatch => {
