@@ -5,7 +5,6 @@ export default (props) => {
 	const post = props
 
 	// Instagram json structure: https://www.instagram.com/blinkfitness/media/
-
 	let image = null
 	if (post.images){
 		if (post.images.low_resolution)
