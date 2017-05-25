@@ -47,7 +47,7 @@
     "react-dropzone": "latest",
     "react-google-maps": "^6.3.0",
     "react-redux": "latest",
-    "react-time": "latest",
+    "react-time": "^4.3.0",
     "redux": "latest",
     "redux-thunk": "latest",
     "serve-favicon": "latest",

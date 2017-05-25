@@ -1,4 +1,5 @@
 import React from 'react'
+import { DateUtils } from '../../utils'
 
 export default (props) => {
 
@@ -24,7 +25,7 @@ export default (props) => {
 			</div>
 			<div className="entry-c">
 				<div className="entry-title nobottompadding clearfix">
-					<span style={localStyle.detail}>{ post.created_time }</span>
+					<span style={localStyle.detail}>{ DateUtils.formattedDate(1000*post.created_time) }</span>
 					<h4 className="nobottommargin notopmargin">
 						<a href="#" style={localStyle.header}>{caption}</a>
 					</h4>
