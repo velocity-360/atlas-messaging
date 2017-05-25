@@ -7,13 +7,28 @@ class Search extends Component {
 	constructor(){
 		super()
 		this.state = {
+			map: null,
 			selected: null
 		}
+	}
+
+	zoomToPlace(center, map){
+		if (map == null)
+			return
+
+		const delta = .005 // this adjusts the zoom level
+		map.fitBounds({
+			north: center.lat+delta,
+			east: center.lng+delta,
+			south: center.lat-delta,
+			west: center.lng-delta
+		})
 	}
 
 	markerClicked(marker, map){
 		window.location.href = '/#'+marker.key
 		this.selectPlace(marker.key)
+		this.zoomToPlace(marker.position, map)
 	}
 
 	selectPlace(placeId, event){
@@ -29,6 +44,10 @@ class Search extends Component {
 			return
 
 		const selectedPlace = this.props.place[placeId]
+
+		if (selectedPlace.location != null)
+			this.zoomToPlace(selectedPlace.location, this.state.map)
+
 		if (selectedPlace.instagram == null)
 			return
 
@@ -93,12 +112,27 @@ class Search extends Component {
 		})
 
 		const posts = this.props.posts[this.state.selected] || []
+		const selectedPlace = this.props.place[this.state.selected]
+		const center = (selectedPlace) ? selectedPlace.location : this.props.session.currentLocation
+
+		// if (selectedPlace)
+		// 	console.log('SELECTED PLACE: '+JSON.stringify(selectedPlace.location))
+
 		return (
 			<div>
 				<Nav />
 				<header id="header" className="no-sticky" style={{background:'#fff', paddingTop:70}}>
 					<Map 
-						center={this.props.session.currentLocation}
+						onMapReady={ map => {
+							if (this.state.map != null)
+								return
+
+							console.log('OnMapReady: '+JSON.stringify(map.getCenter()))
+							this.setState({
+								map: map
+							})
+						}}
+						center={center}
 						zoom={14}
 						locationChanged={this.locationChanged.bind(this)}
 						markers={markers}
