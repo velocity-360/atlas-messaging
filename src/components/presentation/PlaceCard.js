@@ -4,11 +4,11 @@ export default (props) => {
 	const place = props
 
 	const textColor = (props.selected) ? 'red' : '#333'
-	const bgColor = (props.selected) ? '#f9f9f9' : '#fff'
+	const bgColor = (props.selected) ? '#f1f9f5' : '#fff'
 	const style = {height:120, background:bgColor, padding:'8px 12px 12px 24px', borderBottom:'1px solid #f9f9f9'}
 
 	return (
-		<div id={place.id} style={style}>
+		<div id={place.id} onClick={props.selectPlace.bind(this, place.id)} style={style}>
 			<a href="#" onClick={props.selectPlace.bind(this, place.id)}>
 				<img style={localStyle.icon} src={place.icon} />
 			</a>
