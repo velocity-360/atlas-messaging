@@ -80,12 +80,12 @@ class Search extends Component {
 		const places = this.props.place.all || []
 		let markers = []
 		places.forEach((place, i) => {
-			// const icon = (place.id) ? 'dist/images/icons/map_icon_32.png' : 'dist/images/icons/map-icon-red.png'
+			const icon = (place.id == this.state.selected) ? 'map-icon-red-48.png' : 'map_icon_32.png'
 			if (place.location != null){
 				markers.push({
 					key: place.id,
 				    position: {lat:place.location.lat, lng:place.location.lng},
-					icon: 'dist/images/icons/map_icon_32.png',
+					icon: 'dist/images/icons/' + icon,
 					label: '',
 					defaultAnimation: 2
 				})
