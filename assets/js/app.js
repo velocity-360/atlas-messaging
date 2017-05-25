@@ -69,6 +69,58 @@ var selectPlace = function(event){
 	$('#input-state').val(selectedPlace.state)
 	$('#icon').attr('src', selectedPlace.icon)
 	$('#submit-button').html('Update Place')
+	$('#delete-button').attr('style', '') // make button visible
+}
+
+var deletePlace = function(event){
+	event.preventDefault()
+	if (confirm('Are You Sure?') == false)
+		return
+
+	console.log('deletePlace: '+JSON.stringify(selectedPlace))
+	turbo.remove('place', selectedPlace, function(err, data){
+		if (err){
+			alert('ERROR: '+err.message)
+			return
+		}
+
+		// alert('PLACE REMOVED')
+		var updatedList = []
+		places.forEach(function(place, i){
+			if (place.id != selectedPlace.id)
+				updatedList.push(place)
+		})
+
+		selectedPlace = null
+		places = updatedList
+		renderPlaces()
+
+		place = {
+			name: '',
+			instagram: '',
+			address: '',
+			city: '',
+			state: '',
+			website: '',
+			icon: '',
+			banner: '',
+			location: {
+				lat: 0.0,
+				lng: 0.0
+			}
+		}
+
+		$('#headline').html('Edit Place')
+		$('#input-name').val('')
+		$('#input-instagram').val('')
+		$('#input-website').val('')
+		$('#input-address').val('')
+		$('#input-city').val('')
+		$('#input-state').val('')
+		$('#icon').attr('src', '')
+		$('#submit-button').html('Create Place')
+		$('#delete-button').attr('style', 'display:none') // make button visible
+	})
 }
 
 var updatePlace = function(event){
