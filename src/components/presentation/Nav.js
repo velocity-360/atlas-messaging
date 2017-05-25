@@ -6,9 +6,17 @@ export default (props) => {
 		<div id="page-menu" className="sticky-page-menu">
 			<div id="page-menu-wrap">
 				<div className="container clearfix" style={{width:98+'%', marginTop:10}}>
-					<div style={{fontFamily:'Pathway Gothic One',fontSize:30,fontWeight:100}} className="menu-title">
-						<a style={{color:'#333'}} href="/">Atlas</a>
+					<div className="btn-group">
+						<button style={{border:'none',fontSize:30,padding:0,margin:0}} className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+							Atlas
+						</button>
+						<ul className="dropdown-menu" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+						</ul>
 					</div>
+
 
 					<nav className="one-page-menu">
 						<ul className="hidden-xs">
