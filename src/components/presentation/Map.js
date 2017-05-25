@@ -18,7 +18,7 @@ class Map extends Component {
 	}
 
 	zoomChanged(){
-		console.log('zoomChanged: '+this.state.map.getZoom())
+		// console.log('zoomChanged: '+this.state.map.getZoom())
 
 	}
 
@@ -26,6 +26,7 @@ class Map extends Component {
 		if (this.state.map != null)
 			return
 
+		this.props.onMapReady(map)
 		this.setState({
 			map: map
 		})
@@ -35,6 +36,7 @@ class Map extends Component {
 		if (this.props.markerClicked != null)
 			this.props.markerClicked(marker, this.state.map)
 	}
+
 
 	render(){
 		const markers = this.props.markers || []
