@@ -53,10 +53,16 @@ class Search extends Component {
 		// 	lng: location.lng,
 		// 	query: this.props.session.query
 		// })
+
 		this.props
 		.searchPlaces(null)
-		.then(response => {
-			
+		.then(data => {
+			if (data.length == 0)
+				return
+
+			const first = data[0]
+			this.selectPlace(first.id)
+			return data
 		})
 		.catch(err => {
 			alert('ERROR: '+err.message)
@@ -74,6 +80,7 @@ class Search extends Component {
 		const places = this.props.place.all || []
 		let markers = []
 		places.forEach((place, i) => {
+			// const icon = (place.id) ? 'dist/images/icons/map_icon_32.png' : 'dist/images/icons/map-icon-red.png'
 			if (place.location != null){
 				markers.push({
 					key: place.id,
