@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Nav, Map, Footer, PlaceCard, Post } from '../components/presentation'
+import { Nav, Map, Footer, PlaceCard, PlaceInfo, Post } from '../components/presentation'
 import actions from '../actions'
 
 class Search extends Component {
@@ -145,7 +145,7 @@ class Search extends Component {
 					<div className="row">
 
 						<div className="col-md-4" style={{padding:0}}>
-							<div style={{background:'red', maxHeight:650, overflowY:'scroll'}}>
+							<div style={{background:'#fff', maxHeight:650, overflowY:'scroll'}}>
 								{ places.map((place, i) => {
 										const selected = (this.state.selected == place.id)
 										return <PlaceCard key={place.id} selectPlace={this.selectPlace.bind(this)} selected={selected} {...place} />
@@ -156,11 +156,10 @@ class Search extends Component {
 
 						<div className="col-md-8" style={{padding:0}}>
 							<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
-
+								<PlaceInfo {...selectedPlace} />
 								<div className="events small-thumbs">
 									{ posts.map((post, i) => <Post key={post.id} {...post} />) }
 								</div>
-
 							</div>
 						</div>
 
