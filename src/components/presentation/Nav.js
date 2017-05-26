@@ -19,9 +19,7 @@ export default (props) => {
 
 					<nav className="one-page-menu">
 						<ul className="hidden-xs">
-							<li><a href="http://turbo.velocity360.io/landing"><div style={{color:'#fff'}}>Home</div></a></li>
-							<li><a href="http://www.atlasmessaging.com"><div style={{color:'#fff'}}>About</div></a></li>
-							<li><a href="/"><div style={{color:'#fff'}}>Join</div></a></li>							
+							<li><a href="mailto:info@atlasmessaging.com"><div style={{color:'#fff'}}>Contact</div></a></li>
 						</ul>
 
 						<ul className="visible-xs" style={{background:'#000'}}>
