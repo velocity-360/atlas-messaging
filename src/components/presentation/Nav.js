@@ -4,11 +4,11 @@ export default (props) => {
 
 	return (
 		<div id="page-menu" className="sticky-page-menu">
-			<div id="page-menu-wrap">
+			<div id="page-menu-wrap" style={{background: '#35D9C3'}}>
 				<div className="container clearfix" style={{width:98+'%', marginTop:10}}>
 					<div className="btn-group">
-						<button style={{border:'none',fontSize:30,padding:0,margin:0}} className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
-							Atlas
+						<button style={localStyle.button} className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+							<img src="dist/images/logo.png" />
 						</button>
 						<ul className="dropdown-menu" role="menu">
 							<li><a href="/team">Team</a></li>
@@ -19,9 +19,9 @@ export default (props) => {
 
 					<nav className="one-page-menu">
 						<ul className="hidden-xs">
-							<li><a href="http://turbo.velocity360.io/landing"><div>Home</div></a></li>
-							<li><a href="http://www.atlasmessaging.com"><div>About</div></a></li>
-							<li><a href="/"><div>Join</div></a></li>							
+							<li><a href="http://turbo.velocity360.io/landing"><div style={{color:'#fff'}}>Home</div></a></li>
+							<li><a href="http://www.atlasmessaging.com"><div style={{color:'#fff'}}>About</div></a></li>
+							<li><a href="/"><div style={{color:'#fff'}}>Join</div></a></li>							
 						</ul>
 
 						<ul className="visible-xs" style={{background:'#000'}}>
@@ -34,4 +34,14 @@ export default (props) => {
 			</div>
 		</div>
 	)
+}
+
+const localStyle = {
+	button: {
+		background: '#35D9C3',
+		border: 'none',
+		fontSize: 30,
+		padding: 0,
+		margin: 0
+	}
 }
