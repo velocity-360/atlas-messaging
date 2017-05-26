@@ -2,7 +2,6 @@ import React from 'react'
 import { DateUtils, TextUtils } from '../../utils'
 
 export default (props) => {
-
 	const post = props
 
 	// Instagram json structure: https://www.instagram.com/blinkfitness/media/
