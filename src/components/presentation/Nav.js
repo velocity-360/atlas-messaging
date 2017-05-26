@@ -11,12 +11,11 @@ export default (props) => {
 							Atlas
 						</button>
 						<ul className="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
+							<li><a href="/team">Team</a></li>
+							<li><a href="/terms">Terms of Use</a></li>
+							<li><a href="/privacy">Privacy Policy</a></li>
 						</ul>
 					</div>
-
 
 					<nav className="one-page-menu">
 						<ul className="hidden-xs">
