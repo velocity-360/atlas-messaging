@@ -23,7 +23,7 @@ export default (props) => {
 								<i className="icon-twitter"></i>
 							</a>
 
-							<a target="_blank" href="#" className="social-icon si-small si-borderless si-instagram">
+							<a target="_blank" href="https://www.instagram.com/atlasmessaging/" className="social-icon si-small si-borderless si-instagram">
 								<i className="icon-instagram"></i>
 								<i className="icon-instagram"></i>
 							</a>
