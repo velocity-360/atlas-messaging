@@ -1,5 +1,5 @@
 import React from 'react'
-import { DateUtils } from '../../utils'
+import { DateUtils, TextUtils } from '../../utils'
 
 export default (props) => {
 
@@ -12,7 +12,7 @@ export default (props) => {
 			image = post.images.low_resolution.url || 'https://media-service.appspot.com/site/images/JoSkY_8o?crop=120'
 	}
 
-	let caption = null
+	let caption = ''
 	if (post.caption)
 		caption = post.caption.text || ''
 
@@ -27,7 +27,7 @@ export default (props) => {
 				<div className="entry-title nobottompadding clearfix">
 					<span style={localStyle.detail}>{ DateUtils.formattedDate(1000*post.created_time) }</span>
 					<h4 className="nobottommargin notopmargin">
-						<a href="#" style={localStyle.header}>{caption}</a>
+						<a href="#" style={localStyle.header}>{ TextUtils.truncateText(caption, 160) }</a>
 					</h4>
 				</div>
 			</div>
