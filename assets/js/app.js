@@ -14,6 +14,7 @@ var place = {
 	website: '',
 	icon: '',
 	banner: '',
+	filters: '',
 	location: {
 		lat: 0.0,
 		lng: 0.0
@@ -70,6 +71,11 @@ var selectPlace = function(event){
 	$('#icon').attr('src', selectedPlace.icon)
 	$('#submit-button').html('Update Place')
 	$('#delete-button').attr('style', '') // make button visible
+
+	// might be null
+	var filters = (selectedPlace.filters) ? selectedPlace.filters.join(', ') : ''
+	$('#input-filters').val(filters)
+
 }
 
 var deletePlace = function(event){
@@ -104,6 +110,7 @@ var deletePlace = function(event){
 			website: '',
 			icon: '',
 			banner: '',
+			filters: '',
 			location: {
 				lat: 0.0,
 				lng: 0.0
@@ -117,6 +124,7 @@ var deletePlace = function(event){
 		$('#input-address').val('')
 		$('#input-city').val('')
 		$('#input-state').val('')
+		$('#input-filters').val('')
 		$('#icon').attr('src', '')
 		$('#submit-button').html('Create Place')
 		$('#delete-button').attr('style', 'display:none') // make button visible
@@ -195,6 +203,14 @@ var createPlace = function(event){
 		return
 	}
 
+	var filtersArray = []
+	place.filters.split(',').forEach(function(filter){
+		if (filter.length > 0)
+			filtersArray.push(filter.trim())
+	})
+
+	place['filters'] = filtersArray
+
 	if (place.address.length>0 &&  place.city.length>0 && place.state.length>0){
 
 		// TODO: this should be converted into a Turbo client function:
@@ -270,6 +286,14 @@ var editSelectedPlace = function(){
 		alert('Please specify the ADDRESS')
 		return
 	}
+
+	var filtersArray = []
+	place.filters.split(',').forEach(function(filter){
+		if (filter.length > 0)
+			filtersArray.push(filter.trim())
+	})
+
+	place['filters'] = filtersArray
 
 	// TODO: check if selectedPlace address is different than original - if so, geocode
 	// turbo.update(resource, entity, params, completion)
