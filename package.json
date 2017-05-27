@@ -42,7 +42,7 @@
     "mongoose": "latest",
     "morgan": "latest",
     "react": "latest",
-    "react-bootstrap": "latest",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "latest",
     "react-dropzone": "latest",
     "react-google-maps": "^6.3.0",

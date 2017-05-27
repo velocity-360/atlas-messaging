@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Nav, Map, Footer, PlaceCard, PlaceInfo, Post } from '../components/presentation'
 import actions from '../actions'
@@ -8,7 +9,8 @@ class Search extends Component {
 		super()
 		this.state = {
 			map: null,
-			selected: null
+			selected: null,
+			showModal: false
 		}
 	}
 
@@ -95,6 +97,16 @@ class Search extends Component {
 		// })
 	}
 
+	toggleModal(event){
+		if (event)
+			event.preventDefault()
+
+		console.log('toggleModal: ')
+		this.setState({
+			showModal: !this.state.showModal
+		})
+	}
+
 	render(){
 		const places = this.props.place.all || []
 		let markers = []
@@ -158,16 +170,34 @@ class Search extends Component {
 							<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
 								<PlaceInfo {...selectedPlace} />
 								<div className="events small-thumbs">
-									{ posts.map((post, i) => <Post key={post.id} {...post} />) }
+									{ posts.map((post, i) => <Post clickHandler={this.toggleModal.bind(this)} key={post.id} {...post} />) }
 								</div>
 							</div>
 						</div>
 
 					</div>
 				</section>
+
+		        <Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
+		            <Modal.Body style={localStyle.modal}>
+		                <div style={{textAlign:'center'}}>
+		                    <h4>Edit Entity</h4>
+		                </div>
+		            </Modal.Body>
+		        </Modal>
+
 			</div>
 		)
 	}
+}
+
+const localStyle = {
+	modal: {
+		background: '#fff',
+		padding: 24,
+		borderRadius: 3,
+		minHeight: 370
+	}	
 }
 
 const stateToProps = (state) => {
