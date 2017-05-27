@@ -165,7 +165,6 @@ class Search extends Component {
 
 					</div>
 				</section>
-				<Footer />
 			</div>
 		)
 	}
