@@ -9,8 +9,9 @@ class Search extends Component {
 		super()
 		this.state = {
 			map: null,
-			selected: null,
-			showModal: false
+			selected: null, // ID number of selected place
+			showModal: false,
+			selectedPost: null
 		}
 	}
 
@@ -178,13 +179,17 @@ class Search extends Component {
 					</div>
 				</section>
 
-		        <Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
-		            <Modal.Body style={localStyle.modal}>
-		                <div style={{textAlign:'center'}}>
-		                    <h4>Edit Entity</h4>
-		                </div>
-		            </Modal.Body>
-		        </Modal>
+				{ (selectedPlace == null) ? null : (
+				        <Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
+				            <Modal.Body style={localStyle.modal}>
+				                <div style={{textAlign:'left'}}>
+						        	<img src={selectedPlace.icon} />
+				                    <h4>{selectedPlace.name}</h4>
+				                </div>
+				            </Modal.Body>
+				        </Modal>
+					)
+				}
 
 			</div>
 		)
@@ -194,7 +199,7 @@ class Search extends Component {
 const localStyle = {
 	modal: {
 		background: '#fff',
-		padding: 24,
+		padding: 0,
 		borderRadius: 3,
 		minHeight: 370
 	}	
