@@ -8,6 +8,7 @@ var turbo = Turbo({
 var place = {
 	name: '',
 	instagram: '',
+	description: '',
 	address: '',
 	city: '',
 	state: '',
@@ -47,6 +48,7 @@ var fetchPlaces = function(){
 
 		places = data.results
 		places.forEach(function(place, i){
+			place['filters'] = (place.filters) ? place.filters.join(', ') : '' // might be null
 			placeMap[place.id] = place
 		})
 		// console.log('PLACES: '+JSON.stringify(placeMap))
@@ -58,23 +60,25 @@ var fetchPlaces = function(){
 var selectPlace = function(event){
 	event.preventDefault()
 	selectedPlace = placeMap[event.target.id]
-	// console.log('selectPlace: '+JSON.stringify(selectedPlace))
+	console.log('selectPlace: '+JSON.stringify(selectedPlace))
 
 	place = Object.assign({}, selectedPlace)
 	$('#headline').html('Edit Place')
 	$('#input-name').val(selectedPlace.name)
 	$('#input-instagram').val(selectedPlace.instagram)
+	$('#input-description').val(selectedPlace.description)
 	$('#input-website').val(selectedPlace.website)
 	$('#input-address').val(selectedPlace.address)
 	$('#input-city').val(selectedPlace.city)
 	$('#input-state').val(selectedPlace.state)
+	$('#input-filters').val(selectedPlace.filters)
 	$('#icon').attr('src', selectedPlace.icon)
 	$('#submit-button').html('Update Place')
 	$('#delete-button').attr('style', '') // make button visible
 
 	// might be null
-	var filters = (selectedPlace.filters) ? selectedPlace.filters.join(', ') : ''
-	$('#input-filters').val(filters)
+	// var filters = (selectedPlace.filters) ? selectedPlace.filters.join(', ') : ''
+	// $('#input-filters').val(filters)
 
 }
 
@@ -104,6 +108,7 @@ var deletePlace = function(event){
 		place = {
 			name: '',
 			instagram: '',
+			description: '',
 			address: '',
 			city: '',
 			state: '',
@@ -120,6 +125,7 @@ var deletePlace = function(event){
 		$('#headline').html('Edit Place')
 		$('#input-name').val('')
 		$('#input-instagram').val('')
+		$('#input-description').val('')
 		$('#input-website').val('')
 		$('#input-address').val('')
 		$('#input-city').val('')
@@ -147,7 +153,8 @@ var checkInstagram = function(event){
 	var params = {
 		site: project,
 		exec: 'request',
-		endpoint: 'https://www.instagram.com/'+event.target.value.trim()+'/media/',
+		endpoint: 'https://www.instagram.com/'+event.target.value.trim()+'/?__a=1', // this returns profile info
+		// endpoint: 'https://www.instagram.com/'+event.target.value.trim()+'/media/',
 		query: null
 	}
 
@@ -161,15 +168,20 @@ var checkInstagram = function(event){
         dataType: 'json',
         async: true,
         success: function(response, status) {
-        	var posts = response.data.items
-        	if (posts.length == 0) // profile not found
-        		return
-
-        	var firstPost = posts[0]
-        	var user = firstPost.user
-        	_place['icon'] = user.profile_picture
-
+        	var user = response.data.user
+        	_place['icon'] = user.profile_pic_url_hd
 			$('#icon').attr('src', _place.icon)
+
+			if (user.biography){
+	        	_place['description'] = user.biography
+				$('#input-description').val(_place.description)
+			}
+
+			if (user.external_url){
+	        	_place['website'] = user.external_url
+				$('#input-website').val(_place.website)
+			}
+
 			return
         },
 	    error: function(xhr, status, error) { 
@@ -305,6 +317,8 @@ var editSelectedPlace = function(){
 
 		alert('Place Updated')
 		var newPlace = data.result
+		newPlace['filters'] = (newPlace.filters) ? newPlace.filters.join(', ') : ''
+
 		placeMap[newPlace.id] = newPlace
 	})
 }
