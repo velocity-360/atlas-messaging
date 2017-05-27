@@ -10,10 +10,11 @@ export default (props) => {
 	let address = ''
 
 	if (place){ // TODO: populate other attributes
-		name = place.name
-		image = place.icon
-		address = place.address
+		name = place.name || ''
+		image = place.icon || ''
+		address = place.address || ''
 		website = place.website || ''
+		description = place.description || ''
 		if (website.indexOf('http')==-1 && website.length>0)
 			website = 'http://'+website
 	}
@@ -21,14 +22,16 @@ export default (props) => {
 	return (
 		<div style={localStyle.container}>
 			<img src={image} style={localStyle.image} />
-			<div style={{padding:16}}>
+			<div style={{padding:'16px 16px 0px 16px'}}>
 				<h3 className="notopmargin" style={localStyle.header}>
 					{name}
 				</h3>
-				<hr />
+				<span style={{fontWeight:100, fontSize:12}}>{address}</span>
+				{ (website.length > 0) ? <span style={{marginLeft:16, marginRight:16}}>&bull;</span> : null }
+				{ (website.length > 0) ? <a style={{fontWeight:100, fontSize:12}} target="_blank" href={website}>Website</a> : null }				
 
-				<span style={{fontWeight:100}}>{address}</span><br />
-				{ (website.length > 0) ? <a target="_blank" href={website}>Website</a> : null }
+				<hr />
+				<p style={localStyle.description}>{description}</p>
 			</div>
 		</div>
 	)
@@ -40,8 +43,12 @@ const localStyle = {
 		background: '#fff',
 		marginBottom: 24
 	},
+	description: {
+		width: 100+'%',
+		minHeight: 42
+	},
 	image: {
-		width: 100,
+		width: 186,
 		float: 'right',
 		marginLeft: 16
 	},
