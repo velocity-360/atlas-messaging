@@ -4,6 +4,7 @@ import Footer from './Footer'
 import PlaceCard from './PlaceCard'
 import PlaceInfo from './PlaceInfo'
 import Post from './Post'
+import PostDetail from './PostDetail'
 
 export {
 
@@ -12,6 +13,7 @@ export {
 	Footer,
 	PlaceCard,
 	PlaceInfo,
-	Post
+	Post,
+	PostDetail
 	
 }

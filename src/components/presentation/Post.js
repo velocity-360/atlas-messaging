@@ -16,7 +16,7 @@ export default (props) => {
 		caption = post.caption.text || ''
 
 	return (
-		<div onClick={props.clickHandler.bind(this)} className="entry clearfix" style={localStyle.container}>
+		<div onClick={props.clickHandler.bind(this, post)} className="entry clearfix" style={localStyle.container}>
 			<div className="entry-image hidden-sm" style={{width:120}}>
 				<a target="_blank" href={image}>
 					<img src={image} alt="Atlas" />

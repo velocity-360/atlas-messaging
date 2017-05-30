@@ -12,8 +12,8 @@ export default (props) => {
 						</button>
 						<ul className="dropdown-menu" role="menu">
 							<li><a href="/team">Team</a></li>
-							<li><a href="/terms">Terms of Use</a></li>
-							<li><a href="/privacy">Privacy Policy</a></li>
+							<li><a href="http://www.atlasmessaging.com/terms.html">Terms of Use</a></li>
+							<li><a href="http://www.atlasmessaging.com/privacy.html">Privacy Policy</a></li>
 						</ul>
 					</div>
 

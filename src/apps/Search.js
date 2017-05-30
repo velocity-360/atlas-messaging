@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { Nav, Map, Footer, PlaceCard, PlaceInfo, Post } from '../components/presentation'
+import { Nav, Map, Footer, PlaceCard, PlaceInfo, Post, PostDetail } from '../components/presentation'
 import actions from '../actions'
 
 class Search extends Component {
@@ -102,9 +102,16 @@ class Search extends Component {
 		if (event)
 			event.preventDefault()
 
-		console.log('toggleModal: ')
 		this.setState({
 			showModal: !this.state.showModal
+		})
+	}
+
+	selectPost(post, event){
+		console.log('selectPost: '+JSON.stringify(post))
+		this.setState({
+			selectPost: post,
+			showModal: true
 		})
 	}
 
@@ -171,7 +178,7 @@ class Search extends Component {
 							<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
 								<PlaceInfo {...selectedPlace} />
 								<div className="events small-thumbs">
-									{ posts.map((post, i) => <Post clickHandler={this.toggleModal.bind(this)} key={post.id} {...post} />) }
+									{ posts.map((post, i) => <Post clickHandler={this.selectPost.bind(this)} key={post.id} {...post} />) }
 								</div>
 							</div>
 						</div>
@@ -182,10 +189,7 @@ class Search extends Component {
 				{ (selectedPlace == null) ? null : (
 				        <Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
 				            <Modal.Body style={localStyle.modal}>
-				                <div style={{textAlign:'left'}}>
-						        	<img src={selectedPlace.icon} />
-				                    <h4>{selectedPlace.name}</h4>
-				                </div>
+				            	<PostDetail {...this.state.selectPost} />
 				            </Modal.Body>
 				        </Modal>
 					)
