@@ -182,10 +182,11 @@ class Search extends Component {
 		const posts = this.props.posts[this.state.selected] || []
 		const selectedPlace = this.props.place[this.state.selected]
 		const center = (selectedPlace) ? selectedPlace.location : this.props.session.currentLocation
+		const maxHeight = window.innerHeight
 
 		// if (selectedPlace)
 		// 	console.log('SELECTED PLACE: '+JSON.stringify(selectedPlace.location))
-
+		
 		return (
 			<div>
 				<Nav user={this.props.account.user} logout={this.logout.bind(this)} />
@@ -213,7 +214,7 @@ class Search extends Component {
 					<div className="row">
 
 						<div className="col-md-4" style={{padding:0}}>
-							<div style={{background:'#fff', maxHeight:650, overflowY:'scroll'}}>
+							<div style={{background:'#fff', maxHeight:maxHeight, overflowY:'scroll'}}>
 								{ places.map((place, i) => {
 										const selected = (this.state.selected == place.id)
 										return <PlaceCard key={place.id} selectPlace={this.selectPlace.bind(this)} selected={selected} {...place} />
@@ -223,7 +224,7 @@ class Search extends Component {
 						</div>
 
 						<div className="col-md-8" style={{padding:0}}>
-							<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:650, overflowY:'scroll'}}>
+							<div style={{background:'#f9f9f9', padding:'24px 36px 24px 24px', maxHeight:maxHeight, overflowY:'scroll'}}>
 								<PlaceInfo {...selectedPlace} />
 								<div className="events small-thumbs">
 									{ posts.map((post, i) => <Post clickHandler={this.selectPost.bind(this)} key={post.id} {...post} />) }
