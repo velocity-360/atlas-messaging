@@ -126,19 +126,26 @@ class Search extends Component {
 
 	subscribeToPlace(profile){
 		// console.log('SUBSCRIBE TO PLACE: '+JSON.stringify(profile))
-		// check if profile is 'id' - if not, this is a new user so register
-		this.props.createUser(profile)
-		.then(data => {
-			// console.log('CREATE USER SUCCESS: '+JSON.stringify(data))
-			// CREATE USER SUCCESS: {"site":"","firstName":"","lastName":"","email":"dkwon@velocity360.io",
-			// "username":"","bio":"","image":"","timestamp":"2017-05-31T15:59:16.121Z","stripe":{},
-			// "schema":"user","id":"592ee8545b71e80011e11a53","editable":["firstName","lastName","email",
-			// "username","bio","image"],"keys":["id","timestamp","firstName","lastName","email","username","bio",
-			// "image"]}
-		})
-		.catch(err => {
-			console.log('CREATE USER ERROR: '+err.message)
-		})
+
+		if (profile.id == null){ // check if profile is 'id' - if not, this is a new user so register
+			this.props.createUser(profile)
+			.then(data => {
+				// console.log('CREATE USER SUCCESS: '+JSON.stringify(data))
+				// CREATE USER SUCCESS: {"site":"","firstName":"","lastName":"","email":"dkwon@velocity360.io",
+				// "username":"","bio":"","image":"","timestamp":"2017-05-31T15:59:16.121Z","stripe":{},
+				// "schema":"user","id":"592ee8545b71e80011e11a53","editable":["firstName","lastName","email",
+				// "username","bio","image"],"keys":["id","timestamp","firstName","lastName","email","username","bio",
+				// "image"]}
+			})
+			.catch(err => {
+				console.log('CREATE USER ERROR: '+err.message)
+			})
+			return
+		}
+
+		// TODO: user logged in - send update instead
+
+
 	}
 
 	logout(event){
