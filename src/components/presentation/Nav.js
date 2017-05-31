@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 export default (props) => {
 
+	const user = props.user // can be null
 	return (
 		<div id="page-menu" className="sticky-page-menu">
 			<div id="page-menu-wrap" style={{background: '#35D9C3'}}>
@@ -19,6 +20,8 @@ export default (props) => {
 
 					<nav className="one-page-menu">
 						<ul className="hidden-xs">
+							{ (user) ? <li><a href="/"><div style={{color:'#fff'}}>{user.email}</div></a></li> : <li><a href="/login"><div style={{color:'#fff'}}>Log In</div></a></li> }
+							{ (user) ? <li><a onClick={props.logout.bind(this)} href="#"><div style={{color:'#fff'}}>Log Out</div></a></li> : null }
 							<li><a href="mailto:info@atlasmessaging.com"><div style={{color:'#fff'}}>Contact</div></a></li>
 						</ul>
 

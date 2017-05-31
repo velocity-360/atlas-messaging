@@ -71,7 +71,8 @@
   "deploy": [
     "index.html",
     "dist",
-    "places"
+    "places",
+    "login"
   ],
   "app": "591f2766fbd0120011a4d4de"
 }

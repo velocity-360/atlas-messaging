@@ -77,7 +77,18 @@ gulp.task('app', function(){
         .pipe(gulp.dest('./dist/js/'))
 });
 
-gulp.task('js', ['app'], function(){
+gulp.task('landing', function(){
+    return gulp.src(
+            ['./assets/js/landing.js']
+        )
+        .pipe(sourcemaps.init())
+        .pipe(gp_uglify())
+        .pipe(gp_rename('landing.min.js'))
+        .pipe(sourcemaps.write(''))
+        .pipe(gulp.dest('./dist/js/'))
+});
+
+gulp.task('js', ['app', 'landing'], function(){
     return gulp.src(
             [
                 './assets/js/jquery.js',

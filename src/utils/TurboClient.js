@@ -71,6 +71,23 @@ const deleteRequest = (resource, entity, actionType) => {
 		})
 }
 
+const createUser = (credentials, actionType) => {
+	return dispatch => turbo({site_id:APP_ID}).createUser(credentials)
+		.then(data => {
+			if (actionType != null){
+				dispatch({
+					type: actionType,
+					data: data
+				})
+			}
+
+			return data
+		})
+		.catch(err => {
+			throw err
+		})
+}
+
 const login = (credentials, actionType) => {
 	return dispatch => turbo({site_id:APP_ID}).login(credentials)
 		.then(data => {
@@ -86,7 +103,23 @@ const login = (credentials, actionType) => {
 		.catch(err => {
 			throw err
 		})
+}
 
+const logout = (actionType) => {
+	return dispatch => turbo({site_id:APP_ID}).logout()
+		.then(data => { // returns null on success
+			if (actionType != null){
+				dispatch({
+					type: actionType,
+					data: data
+				})
+			}
+
+			return data
+		})
+		.catch(err => {
+			throw err
+		})
 }
 
 const currentUser = (actionType) => {
@@ -112,7 +145,9 @@ export default {
 	postRequest: postRequest,
 	putRequest: putRequest,
 	deleteRequest: deleteRequest,
+	createUser: createUser,
 	login: login,
+	logout: logout,
 	currentUser: currentUser
 
 }

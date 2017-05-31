@@ -66,7 +66,17 @@ class Search extends Component {
 	}
 
 	componentDidMount(){
-		this.searchPlaces(this.props.session.currentLocation)
+		this.props.currentUser()
+		.then(data => {
+			// console.log('CURRENT USER SUCCESS: '+JSON.stringify(data))			
+			this.searchPlaces(this.props.session.currentLocation)
+			return data
+		})
+		.catch(err => {
+			// console.log('CURRENT USER ERROR: '+err.message)
+			this.searchPlaces(this.props.session.currentLocation)
+			return
+		})
 	}
 
 	searchPlaces(location){
@@ -108,10 +118,41 @@ class Search extends Component {
 	}
 
 	selectPost(post, event){
-		console.log('selectPost: '+JSON.stringify(post))
 		this.setState({
 			selectPost: post,
 			showModal: true
+		})
+	}
+
+	subscribeToPlace(profile){
+		// console.log('SUBSCRIBE TO PLACE: '+JSON.stringify(profile))
+		// check if profile is 'id' - if not, this is a new user so register
+		this.props.createUser(profile)
+		.then(data => {
+			// console.log('CREATE USER SUCCESS: '+JSON.stringify(data))
+			// CREATE USER SUCCESS: {"site":"","firstName":"","lastName":"","email":"dkwon@velocity360.io",
+			// "username":"","bio":"","image":"","timestamp":"2017-05-31T15:59:16.121Z","stripe":{},
+			// "schema":"user","id":"592ee8545b71e80011e11a53","editable":["firstName","lastName","email",
+			// "username","bio","image"],"keys":["id","timestamp","firstName","lastName","email","username","bio",
+			// "image"]}
+		})
+		.catch(err => {
+			console.log('CREATE USER ERROR: '+err.message)
+		})
+	}
+
+	logout(event){
+		if (event)
+			event.preventDefault()
+
+		this.props.logout()
+		.then(data => {
+			console.log('LOG OUT SUCCESS: ')
+
+		})
+		.catch(err => {
+			console.log('LOG OUT ERROR: '+err.message)
+
 		})
 	}
 
@@ -140,7 +181,7 @@ class Search extends Component {
 
 		return (
 			<div>
-				<Nav />
+				<Nav user={this.props.account.user} logout={this.logout.bind(this)} />
 				<header id="header" className="no-sticky" style={{background:'#fff', paddingTop:70}}>
 					<Map 
 						onMapReady={ map => {
@@ -189,7 +230,11 @@ class Search extends Component {
 				{ (selectedPlace == null) ? null : (
 				        <Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
 				            <Modal.Body style={localStyle.modal}>
-				            	<PostDetail place={selectedPlace} {...this.state.selectPost} />
+				            	<PostDetail 
+				            		user={this.props.account.user} // can be null
+				            		subscribeToPlace={this.subscribeToPlace.bind(this)}
+				            		place={selectedPlace}
+				            		{...this.state.selectPost} />
 				            </Modal.Body>
 				        </Modal>
 					)
@@ -212,6 +257,7 @@ const localStyle = {
 const stateToProps = (state) => {
 	return {
 		session: state.session,
+		account: state.account,
 		place: state.place,
 		posts: state.post
 	}
@@ -221,7 +267,10 @@ const dispatchToProps = (dispatch) => {
 	return {
 		locationChanged: (location) => dispatch(actions.updateLocation(location)),
 		searchPlaces: (location) => dispatch(actions.searchPlaces(location)),
-		queryInstagram: (username) => dispatch(actions.queryInstagram(username))
+		queryInstagram: (username) => dispatch(actions.queryInstagram(username)),
+		currentUser: () => dispatch(actions.currentUser()),
+		createUser: (credentials) => dispatch(actions.createUser(credentials)),
+		logout: () => dispatch(actions.logout())
 	}
 }
 

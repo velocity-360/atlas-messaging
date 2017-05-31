@@ -69,6 +69,25 @@ export default {
 
 			return dispatch(post('http://www.turbo360.co/functions', params, constants.POSTS_RECEIVED))
 		}
+	},
+
+	createUser: (params) => {
+		return dispatch => {
+			// return dispatch(TurboClient.postRequest('user', params, constants.USER_CREATED))
+			return dispatch(TurboClient.createUser(params, constants.USER_CREATED))
+		}
+	},
+
+	currentUser: () => {
+		return dispatch => {
+			return dispatch(TurboClient.currentUser(constants.CURRENT_USER_RECEIVED))
+		}
+	},
+
+	logout: () => {
+		return dispatch => {
+			return dispatch(TurboClient.logout(constants.USER_LOGGED_OUT))
+		}
 	}
 
 	// searchPlaces: (params) => {

@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon"  type="image/x-icon" href="img/favicon.ico" >
+
+    <title>Atlas - Blast Messaging Made Easy</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="http://atlasmessaging.com/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="http://atlasmessaging.com/css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://atlasmessaging.com/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <meta name="google-site-verification" content="oe8gb8b85gfyscY_KC0xyCgC0U7EXPfEYZfAR9Ct6Us" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="http://atlasmessaging.com/https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="http://atlasmessaging.com/https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <span class="light"><img width="80px" src="http://atlasmessaging.com/img/web_title.png"></span>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                     </li>
+                    <li>
+                        <a class="page-scroll" href="mailto:info@atlasmessaging.com?subject=Contact Atlas" target="_blank">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container-fluid content-section-intro text-center">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <br /><br /><br /><br /><br /><br />
+                        <h1>Welcome to Atlas</h1>
+                        <p class="intro-text">Atlas is a new blast messaging app for iOS and Android that allows you to create a location-based page to message many people at once. People nearby can follow your page to receive messages as a notification, like a text, and can also privately message you. Try it, it's free!</p>
+                        <a href="https://itunes.apple.com/app/atlas-messaging-for-places/id1126399833?ls=1&mt=8%22" target="_blank">
+                            <img height="60px" src="http://atlasmessaging.com/img/Download_on_the_App_Store_Badge_US-UK_135x40.svg"></a>
+	                        <a href="https://play.google.com/store/apps/details?id=com.atlasmessaging.atlas" target="_blank">
+	                            <img height="90px" src="http://atlasmessaging.com/img/google-play-badge.png"></a>
+                        <br />
+                        <br />
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <br /><br /><br /><br /><br /><br />
+	                    <h1>Login</h1>
+                        <form>
+                        	<input type="text" name="email" onChange="updateVisitor(event)" class="form-control" placeholder="Email" /><br />
+                        	<input type="text" name="password" onChange="updateVisitor(event)" class="form-control" placeholder="Password" /><br />
+                        	<button onClick="login(event)" class="btn btn-info btn-lg">Log In</button>
+
+                        </form>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <br /><br />
+                        <img width="300px" src="http://atlasmessaging.com/img/screenshot_place.png">
+                    </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container-fluid content-section text-center">
+        <div class="row">
+            <!-- <div class="col-lg-8 col-lg-offset-2"> -->
+            <!-- <div class="col-md-9 col-md-push-3"> -->
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <br /><br /><br /><br /><br /><br />
+                <h2>Create a page</h2>
+                <p>Each page is location-based, so it's easy for people to find the pages most relevant to them. For example, if you're a teacher and need to be able to message students and parents, this is an easy way to do that.</p>
+                <a href="#next" class="btn btn-circle-alternate page-scroll">
+                    <i class="fa fa-angle-double-down animated"></i>
+                </a>
+                <br /><br /><br />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <img width="300px" src="http://atlasmessaging.com/img/screenshot_createplace.png">
+            </div>
+        </section>
+            </div>
+        <section id="next" class="container-fluid content-section-alternate text-center">
+            <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <br /><br /><br /><br /><br /><br />
+                <h2>Blast message your followers</h2>
+                <p>Once people follow your page, they receive your messages as a notification.</p>
+                <a href="#last" class="btn btn-circle page-scroll">
+                    <i class="fa fa-angle-double-down animated"></i>
+                </a>
+                <br /><br /><br />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <img width="300px" src="http://atlasmessaging.com/img/screenshot_notifications.png">
+            </div>
+            </div>
+        </section>
+            </div>
+        <section id="last" class="container-fluid content-section text-center">
+            <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h2>Privately message pages</h2>
+                <p>They can privately reply to your messages, as well as message other nearby page.</p>                 
+                <a href="https://itunes.apple.com/app/atlas-messaging-for-places/id1126399833?ls=1&mt=8%22" target="_blank">
+                    <img height="60px" src="http://atlasmessaging.com/img/Download_on_the_App_Store_Badge_US-UK_135x40.svg"></a>
+                <a href="https://play.google.com/store/apps/details?id=com.atlasmessaging.atlas" target="_blank">
+                    <img height="90px" src="http://atlasmessaging.com/img/google-play-badge.png"></a>
+                <br />
+                <br />
+                <br />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <img width="300px" src="http://atlasmessaging.com/img/screenshot_messaging.png">
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center content-section-footer">
+            <!-- <p-footer>&copy; Atlas Messaging, Inc.</p-footer> -->
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="http://atlasmessaging.com/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="http://atlasmessaging.com/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://atlasmessaging.com/js/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="http://atlasmessaging.com/https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="http://atlasmessaging.com/js/grayscale.js"></script>
+
+	<script type="text/javascript" src="http://cdn.velocity360.io/dist/turbo.min.js"></script>
+	<script type="text/javascript" src="../dist/js/landing.min.js"></script>
+</body>
+</html>

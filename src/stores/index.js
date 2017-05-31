@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import { userReducer, sessionReducer, placeReducer, postReducer } from '../reducers'
+import { userReducer, sessionReducer, placeReducer, postReducer, accountReducer } from '../reducers'
 
 var store
 export default {
@@ -9,6 +9,7 @@ export default {
 		
 		const reducers = combineReducers({ // insert reducers here
 			session: sessionReducer,
+			account: accountReducer,
 			place: placeReducer,
 			post: postReducer,
 			user: userReducer
