@@ -189,7 +189,7 @@ class Search extends Component {
 				{ (selectedPlace == null) ? null : (
 				        <Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
 				            <Modal.Body style={localStyle.modal}>
-				            	<PostDetail {...this.state.selectPost} />
+				            	<PostDetail place={selectedPlace} {...this.state.selectPost} />
 				            </Modal.Body>
 				        </Modal>
 					)
