@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import config from './config'
 
 export default (props) => {
 	const place = props
@@ -12,11 +13,11 @@ export default (props) => {
 			<a href="#" onClick={props.selectPlace.bind(this, place.id)}>
 				<img style={localStyle.icon} src={place.icon} />
 			</a>
-			<h4 style={localStyle.header}>
+			<h4 style={config.header}>
 				<a onClick={props.selectPlace.bind(this, place.id)} style={{color:textColor}} href="#">{place.name}</a>
 			</h4>
 			<div style={{lineHeight:'1.1'}}>
-				<span style={localStyle.detail}>{place.address}</span>
+				<span style={config.detail}>{place.address}</span>
 				<br />
 				{ (place.url == null) ? null : <a target="_blank" href={place.url} style={localStyle.link}>website</a> }
 			</div>
@@ -30,16 +31,6 @@ const localStyle = {
 		width: 64,
 		height: 64,
 		borderRadius: 32
-	},
-	header: {
-		fontFamily: 'Pathway Gothic One',
-		fontWeight: 100,
-		marginBottom: 0
-	},
-	detail: {
-		fontWeight: 100,
-		fontSize: 12,
-		color: '#888'
 	},
 	link: {
 		fontWeight: 100,

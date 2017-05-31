@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import config from './config'
 
 export default (props) => {
 	const place = props // can be null
@@ -23,7 +24,7 @@ export default (props) => {
 		<div style={localStyle.container}>
 			<img src={image} style={localStyle.image} />
 			<div style={{padding:'16px 16px 0px 16px'}}>
-				<h3 className="notopmargin" style={localStyle.header}>
+				<h3 className="notopmargin" style={config.header}>
 					{name}
 				</h3>
 				<span style={{fontWeight:100, fontSize:12}}>{address}</span>
@@ -51,10 +52,10 @@ const localStyle = {
 		width: 186,
 		float: 'right',
 		marginLeft: 16
-	},
-	header: {
-		fontFamily: 'Pathway Gothic One',
-		fontWeight: 100,
-		marginBottom: 0
 	}
+	// header: {
+	// 	fontFamily: 'Pathway Gothic One',
+	// 	fontWeight: 100,
+	// 	marginBottom: 0
+	// }
 }

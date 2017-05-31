@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { DateUtils, TextUtils } from '../../utils'
+import config from './config'
 
 export default (props) => {
-
 	const post = props
 
 	let image = null
@@ -22,12 +23,11 @@ export default (props) => {
         	</div>
         	<div className="col-md-8">
         		<div style={{padding:16, overflow:'scroll'}}>
-		            <h4>{caption}</h4>
+					<span style={config.detail}>{ DateUtils.formattedDate(1000*post.created_time) }</span>
+		            <h4 style={config.header}>{caption}</h4>
 
         		</div>
-
         	</div>
         </div>
-
 	)
 }
