@@ -125,6 +125,7 @@ class Search extends Component {
 	}
 
 	subscribeToPlace(profile){
+		const selectedPlace = this.props.place[this.state.selected]
 		// console.log('SUBSCRIBE TO PLACE: '+JSON.stringify(profile))
 
 		if (profile.id == null){ // check if profile is 'id' - if not, this is a new user so register
@@ -136,16 +137,20 @@ class Search extends Component {
 				// "schema":"user","id":"592ee8545b71e80011e11a53","editable":["firstName","lastName","email",
 				// "username","bio","image"],"keys":["id","timestamp","firstName","lastName","email","username","bio",
 				// "image"]}
+				
+				alert('Welcome! You will receive notifications whenever '+selectedPlace.name+' posts a message.')
+				this.setState({
+					showModal: false
+				})
 			})
 			.catch(err => {
 				console.log('CREATE USER ERROR: '+err.message)
 			})
+
 			return
 		}
 
 		// TODO: user logged in - send update instead
-
-
 	}
 
 	logout(event){
@@ -184,9 +189,6 @@ class Search extends Component {
 		const center = (selectedPlace) ? selectedPlace.location : this.props.session.currentLocation
 		const maxHeight = window.innerHeight
 
-		// if (selectedPlace)
-		// 	console.log('SELECTED PLACE: '+JSON.stringify(selectedPlace.location))
-		
 		return (
 			<div>
 				<Nav user={this.props.account.user} logout={this.logout.bind(this)} />
@@ -196,7 +198,7 @@ class Search extends Component {
 							if (this.state.map != null)
 								return
 
-							console.log('OnMapReady: '+JSON.stringify(map.getCenter()))
+							// console.log('OnMapReady: '+JSON.stringify(map.getCenter()))
 							this.setState({
 								map: map
 							})
@@ -247,7 +249,6 @@ class Search extends Component {
 				        </Modal>
 					)
 				}
-
 			</div>
 		)
 	}
