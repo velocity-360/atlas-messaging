@@ -137,7 +137,7 @@ class Search extends Component {
 				// "schema":"user","id":"592ee8545b71e80011e11a53","editable":["firstName","lastName","email",
 				// "username","bio","image"],"keys":["id","timestamp","firstName","lastName","email","username","bio",
 				// "image"]}
-				
+
 				alert('Welcome! You will receive notifications whenever '+selectedPlace.name+' posts a message.')
 				this.setState({
 					showModal: false
@@ -238,15 +238,15 @@ class Search extends Component {
 				</section>
 
 				{ (selectedPlace == null) ? null : (
-				        <Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
-				            <Modal.Body style={localStyle.modal}>
-				            	<PostDetail 
-				            		user={this.props.account.user} // can be null
-				            		subscribeToPlace={this.subscribeToPlace.bind(this)}
-				            		place={selectedPlace}
-				            		{...this.state.selectPost} />
-				            </Modal.Body>
-				        </Modal>
+					<Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
+							<Modal.Body style={localStyle.modal}>
+								<PostDetail 
+									user={this.props.account.user} // can be null
+									subscribeToPlace={this.subscribeToPlace.bind(this)}
+									place={selectedPlace}
+									{...this.state.selectPost} />
+							</Modal.Body>
+						</Modal>
 					)
 				}
 			</div>
