@@ -43,7 +43,6 @@ const post = (endpoint, params, actionType) => {
 
 
 export default {
-
 	updateLocation: (location) => {
 		return {
 			type: constants.CURRENT_LOCATION_CHANGED,
@@ -81,6 +80,12 @@ export default {
 	currentUser: () => {
 		return dispatch => {
 			return dispatch(TurboClient.currentUser(constants.CURRENT_USER_RECEIVED))
+		}
+	},
+
+	updateUser: (user, params) => {
+		return dispatch => {
+			return dispatch(TurboClient.putRequest('user', user, params, constants.USER_UPDATED))
 		}
 	},
 

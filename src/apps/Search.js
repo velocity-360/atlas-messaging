@@ -151,10 +151,21 @@ class Search extends Component {
 		}
 
 		// TODO: user logged in - send update instead
-		console.log('SUBSCRIBE: '+JSON.stringify(profile))
-		alert('Welcome! You will receive notifications whenever '+selectedPlace.name+' posts a message.')
-		this.setState({
-			showModal: false
+		let subscribed = (profile.subscribed) ? Object.assign([], profile.subscribed) : []
+		if (subscribed.indexOf(selectedPlace.id) != -1){ // already subscribed
+			return
+		}
+
+		subscribed.push(selectedPlace.id)
+		this.props.updateUser(profile, {subscribed: subscribed})
+		.then(response => {
+			alert('Welcome! You will receive notifications whenever '+selectedPlace.name+' posts a message.')
+			this.setState({
+				showModal: false
+			})
+		})
+		.catch(err => {
+			alert('Error: '+err.message)
 		})
 	}
 
@@ -284,6 +295,7 @@ const dispatchToProps = (dispatch) => {
 		queryInstagram: (username) => dispatch(actions.queryInstagram(username)),
 		currentUser: () => dispatch(actions.currentUser()),
 		createUser: (credentials) => dispatch(actions.createUser(credentials)),
+		updateUser: (user, params) => dispatch(actions.updateUser(user, params)),
 		logout: () => dispatch(actions.logout())
 	}
 }
