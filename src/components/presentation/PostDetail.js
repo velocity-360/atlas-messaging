@@ -28,6 +28,13 @@ class PostDetail extends Component {
 		if (event)
 			event.preventDefault()
 
+		const currentUser = this.props.currentUser
+		if (currentUser){ // logged in, send back the profile
+			// console.log('CURRENT USER: '+JSON.stringify(currentUser))
+			this.props.subscribeToPlace(currentUser)
+			return
+		}
+
 		if (this.state.visitor.email.length == 0){
 			alert('Please Enter Your Email')
 			return
@@ -54,31 +61,44 @@ class PostDetail extends Component {
 		if (post.caption)
 			caption = post.caption.text || ''
 
+		const currentUser = this.props.currentUser
+		// console.log('CURRENT USER: '+JSON.stringify(currentUser))
+
 		return (
-	        <div className="row" style={{textAlign:'left'}}>
-	        	<div className="col-md-3">
-		            <div style={localStyle.signupForm}>
-			        	<img style={localStyle.icon} src={this.props.place.icon} />
-			        	<h4 style={{fontWeight:400}}>{this.props.place.name}</h4>
-			            <p style={localStyle.paragraph}>Join today to get notified with messages like this</p>
-			            <input style={localStyle.input} onChange={this.updateVisitor.bind(this, 'email')} placeholder="Email" className="form-control" type="text" />
-			            <input style={localStyle.input} onChange={this.updateVisitor.bind(this, 'password')} placeholder="Password" className="form-control" type="password" />
-			            <button onClick={this.subscribe.bind(this)} className="button button-circle button-blue button-small">Subscribe</button>
-		            </div>
-	        	</div>
+			<div className="row" style={{textAlign:'left'}}>
+				<div className="col-md-3">
+					<div style={localStyle.signupForm}>
+						<img style={localStyle.icon} src={this.props.place.icon} />
+						<h4 style={{fontWeight:400}}>{this.props.place.name}</h4>
+						{ (currentUser == null) ? (
+								<div>
+									<p style={localStyle.paragraph}>Join today to get notified with messages like this</p>
+									<input style={localStyle.input} onChange={this.updateVisitor.bind(this, 'email')} placeholder="Email" className="form-control" type="text" />
+									<input style={localStyle.input} onChange={this.updateVisitor.bind(this, 'password')} placeholder="Password" className="form-control" type="password" />
+									<button onClick={this.subscribe.bind(this)} className="button button-circle button-blue button-small">Subscribe</button>
+								</div>
+							) : (
+								<div>
+									<p style={localStyle.paragraph}>Subscribe today to get notified with messages like this</p>
+									<button onClick={this.subscribe.bind(this)} className="button button-circle button-blue button-small">Subscribe</button>
+								</div>
+							)
+						}
+					</div>
+				</div>
 
-	        	<div className="col-md-5">
-	        		<div style={{padding:16, overflow:'scroll'}}>
+				<div className="col-md-5">
+					<div style={{padding:16, overflow:'scroll'}}>
 						<span style={config.detail}>{ DateUtils.formattedDate(1000*post.created_time) }</span>
-			            <h4 style={config.header}>{caption}</h4>
-			            <hr />
-	        		</div>
-	        	</div>
+						<h4 style={config.header}>{caption}</h4>
+						<hr />
+					</div>
+				</div>
 
-	        	<div className="col-md-4">
-		        	<img src={image} />
-	        	</div>
-	        </div>
+				<div className="col-md-4">
+					<img src={image} />
+				</div>
+			</div>
 		)
 	}
 }

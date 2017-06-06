@@ -151,6 +151,11 @@ class Search extends Component {
 		}
 
 		// TODO: user logged in - send update instead
+		console.log('SUBSCRIBE: '+JSON.stringify(profile))
+		alert('Welcome! You will receive notifications whenever '+selectedPlace.name+' posts a message.')
+		this.setState({
+			showModal: false
+		})
 	}
 
 	logout(event){
@@ -241,7 +246,7 @@ class Search extends Component {
 					<Modal bsSize="lg" show={this.state.showModal} onHide={this.toggleModal.bind(this)}>
 							<Modal.Body style={localStyle.modal}>
 								<PostDetail 
-									user={this.props.account.user} // can be null
+									currentUser={this.props.account.user} // can be null
 									subscribeToPlace={this.subscribeToPlace.bind(this)}
 									place={selectedPlace}
 									{...this.state.selectPost} />
