@@ -56,8 +56,15 @@ class PostDetail extends Component {
 
 		return (
 	        <div className="row" style={{textAlign:'left'}}>
-	        	<div className="col-md-4">
-		        	<img src={image} />
+	        	<div className="col-md-3">
+		            <div style={localStyle.signupForm}>
+			        	<img style={localStyle.icon} src={this.props.place.icon} />
+			        	<h4 style={{fontWeight:400}}>{this.props.place.name}</h4>
+			            <p style={localStyle.paragraph}>Join today to get notified with messages like this</p>
+			            <input style={localStyle.input} onChange={this.updateVisitor.bind(this, 'email')} placeholder="Email" className="form-control" type="text" />
+			            <input style={localStyle.input} onChange={this.updateVisitor.bind(this, 'password')} placeholder="Password" className="form-control" type="password" />
+			            <button onClick={this.subscribe.bind(this)} className="button button-circle button-blue button-small">Subscribe</button>
+		            </div>
 	        	</div>
 
 	        	<div className="col-md-5">
@@ -68,15 +75,8 @@ class PostDetail extends Component {
 	        		</div>
 	        	</div>
 
-	        	<div className="col-md-3">
-		            <div style={localStyle.signupForm}>
-			        	<img style={localStyle.icon} src={this.props.place.icon} />
-			        	<h4 style={{fontWeight:400}}>{this.props.place.name}</h4>
-			            <p style={localStyle.paragraph}>Get notified with<br />messages like this:</p>
-			            <input style={localStyle.input} onChange={this.updateVisitor.bind(this, 'email')} placeholder="Email" className="form-control" type="text" />
-			            <input style={localStyle.input} onChange={this.updateVisitor.bind(this, 'password')} placeholder="Password" className="form-control" type="password" />
-			            <button onClick={this.subscribe.bind(this)} className="button button-circle button-blue button-small">Subscribe</button>
-		            </div>
+	        	<div className="col-md-4">
+		        	<img src={image} />
 	        	</div>
 	        </div>
 		)
@@ -88,8 +88,7 @@ const localStyle = {
 	signupForm: {
 		background: '#f9f9f9',
 		padding: 16,
-		minHeight: 370,
-		textAlign: 'right'
+		minHeight: 370
 	},
 	paragraph: {
 		marginBottom: 8,
